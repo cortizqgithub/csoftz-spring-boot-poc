@@ -1,8 +1,8 @@
-package com.example.demo.util;
+package com.example.devops.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.example.demo.domain.Person;
+import com.example.devops.domain.Person;
 import org.junit.Test;
 
 /**

@@ -1,6 +1,6 @@
-package com.example.demo.controller;
+package com.example.devops.controller;
 
-import com.example.demo.domain.Message;
+import com.example.devops.domain.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

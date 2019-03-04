@@ -8,8 +8,8 @@
     <version>0.0.1-RELEASE</version>
     <packaging>jar</packaging>
 
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>devops</name>
+    <description>Spring Boot DevOps configurations and goodies</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
