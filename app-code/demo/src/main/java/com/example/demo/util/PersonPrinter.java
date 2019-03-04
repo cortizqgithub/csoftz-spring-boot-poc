@@ -1,25 +1,23 @@
 package com.example.demo.util;
 
 import com.example.demo.domain.Person;
-import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
-@Log
+@Log4j2
 public class PersonPrinter {
     private Person person;
-    private String separator = " ";
-    private String noLastnameLog = "That person has no name";
 
-    public PersonPrinter(Person person) {
+    PersonPrinter(Person person) {
         this.person = person;
     }
 
     public String toString() {
         if ("".equals(person.getLastName())) {
+            String noLastnameLog = "That person has no name";
             log.info(noLastnameLog);
             return "";
         }
 
-        return String.format(person.getFirstName() + this.separator +
-                person.getLastName());
+        return person.getFirstName() + " " + person.getLastName();
     }
 }

@@ -1,9 +1,9 @@
 package com.example.demo.util;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.example.demo.domain.Person;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * This is part of a demo in supressing lombok annotated classes from coverage, in JaCoCo and in SonarQube.
@@ -12,19 +12,20 @@ import static org.junit.Assert.assertEquals;
  */
 public class PersonPrinterTest {
     @Test
-    public void testDefault() {
+    public void shouldPersonBeComplete() {
         Person harrison = Person.builder()
                 .firstName("John").lastName("Harrison").build();
 
-        assertEquals("John Harrison",
-                new PersonPrinter(harrison).toString());
+        assertThat(new PersonPrinter(harrison).toString())
+                .isEqualTo("John Harrison");
     }
 
     @Test
-    public void testNoLastname() {
+    public void shouldPersonLastNameBeEmpty() {
         Person anonymous = Person.builder()
                 .firstName("anonymous").lastName("").build();
 
-        assertEquals("", new PersonPrinter(anonymous).toString());
+        assertThat(new PersonPrinter(anonymous).toString())
+                .isEmpty();
     }
 }
