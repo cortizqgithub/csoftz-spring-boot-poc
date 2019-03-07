@@ -18,14 +18,14 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
-@AutoConfigureRestDocs(outputDir = "target/snippets")
+@AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
 public class HomeControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     /**
      * Even tough project is configure to use Spring WebFlux (and reactor underneath). It also inherits
-     * Spring MVC semantics. Because the endpoint is not a Flux, or Mono type it mean that Spring MVC Testing
+     * Spring MVC semantics. Because the endpoint is not a Flux, or Mono type it means that Spring MVC Testing
      * can be used.
      *
      * @throws Exception Reports some error.
