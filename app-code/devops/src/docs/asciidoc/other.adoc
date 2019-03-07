@@ -1,0 +1,27 @@
+= Only The Other
+
+Copies other
+
+.CURL
+include::{snippets}/home/curl-request.adoc[]
+
+.HTTPie
+include::{snippets}/home/httpie-request.adoc[]
+
+.Request
+include::{snippets}/home/http-request.adoc[]
+
+.Request Body
+include::{snippets}/home/request-body.adoc[]
+
+.Response
+include::{snippets}/home/http-response.adoc[]
+
+.Response Body
+include::{snippets}/home/response.body.adoc[]
+
+.Response Fields
+include::{snippets}/home/response-fields.adoc[]
+
+As you can see the format is very simple, and in fact you always get the same message.
+Other
