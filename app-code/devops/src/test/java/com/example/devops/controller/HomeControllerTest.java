@@ -30,6 +30,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -60,11 +61,14 @@ public class HomeControllerTest {
      */
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get(HOME_URL))
+        this.mockMvc.perform(get(HOME_URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello World")))
-                .andDo(document("home", responseFields(
-                        fieldWithPath("message").description("The welcome message for the user."))
+                .andDo(document("home",
+                        preprocessResponse(prettyPrint()),
+                        responseFields(
+                                fieldWithPath("message").description("The welcome message for the user.")
+                        )
                 ));
     }
 
@@ -75,7 +79,7 @@ public class HomeControllerTest {
      */
     @Test
     public void shouldTake2() throws Exception {
-        this.mockMvc.perform(get(HOME_URL))
+        this.mockMvc.perform(get(HOME_URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello World")))
                 .andDo(document("home2",
