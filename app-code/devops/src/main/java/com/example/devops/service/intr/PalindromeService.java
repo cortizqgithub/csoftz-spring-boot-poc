@@ -1,37 +1,32 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   SPRINGBOOTPOC.JAVA                                          */
-/* Description:   Entry point to the application.                             */
+/* Source File:   PALINDROMESERVICE.JAVA                                      */
+/* Description:   Service interface to handle Palindrome operations           */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
+/* Date:          Mar.16/2019                                                 */
 /* Last Modified: Mar.16/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
- Mar.01/2019  COQ  File created.
+ Mar.16/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.example.devops.service.intr;
 
 /**
- * Entry point to the application.
+ * Service interface to handle Palindrome operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Mar.16/2019
- * @since 1.8 (JDK), Mar.01/2019
+ * @since 1.8 (JDK), Mar.16/2019
  */
-@SpringBootApplication
-public class SpringBootPOC {
-
+public interface PalindromeService {
     /**
-     * Main entry point to application.
+     * Validates if info is a Palindrome text. A palindrome sentence is those
+     * that can be spelled the same way forward an backward.
      *
-     * @param args Command line arguments.
+     * @param info Data information to validate
+     * @return True if text is palindrome.
      */
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootPOC.class, args);
-    }
+    Boolean check(String info);
 }

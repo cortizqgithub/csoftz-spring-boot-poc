@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   HOMECONTROLLERTEST.JAVA                                     */
+/* Source File:   HOMECONTROLLERINTEGRATIONTEST.JAVA                          */
 /* Description:   Test REST Api for Home end-points.                          */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
@@ -11,7 +11,7 @@
  History
  Mar.01/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.api.controller;
+package com.example.devops.integration.api.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.devops.api.controller.HomeController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
-public class HomeControllerTest {
+public class HomeControllerIntegrationTest {
     private static final String HOME_URL = "/";
 
     @Autowired
@@ -70,21 +71,5 @@ public class HomeControllerTest {
                                 fieldWithPath("message").description("The welcome message for the user.")
                         )
                 ));
-    }
-
-    /**
-     * WORK in Progress
-     *
-     * @throws Exception Raised and makes test to fail.
-     */
-    @Test
-    public void shouldTake2() throws Exception {
-        this.mockMvc.perform(get(HOME_URL).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello World")))
-                .andDo(document("home2",
-
-                        preprocessRequest(removeHeaders("Foo")),
-                        preprocessResponse(prettyPrint())));
     }
 }

@@ -29,6 +29,7 @@ public class PersonPrinter {
 
     /**
      * Default Constructor
+     *
      * @param person instance.
      */
     PersonPrinter(Person person) {
@@ -37,6 +38,7 @@ public class PersonPrinter {
 
     /**
      * Prints the Person instance values.
+     *
      * @return
      */
     public String toString() {

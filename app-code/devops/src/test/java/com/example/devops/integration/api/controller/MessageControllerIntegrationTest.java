@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   MESSAGECONTROLLERTEST.JAVA                                  */
+/* Source File:   MESSAGECONTROLLERINTEGRATIONTEST.JAVA                       */
 /* Description:   REST Api for Message end-points.                            */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
@@ -11,10 +11,11 @@
  History
  Mar.01/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.api.controller;
+package com.example.devops.integration.api.controller;
 
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document;
 
+import com.example.devops.api.controller.MessageController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @RunWith(SpringRunner.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
 @WebFluxTest(MessageController.class)
-public class MessageControllerTest {
+public class MessageControllerIntegrationTest {
+    private static final String MSG_SAY_URL = "/api/v1/msg/say";
+
     @Autowired
     private WebTestClient webTestClient;
 
@@ -46,7 +49,7 @@ public class MessageControllerTest {
     @Test
     public void shouldReturnMessage() throws Exception {
         this.webTestClient.get()
-                .uri("/api/v1/msg/say")
+                .uri(MSG_SAY_URL)
                 .exchange()
                 .expectStatus()
                 .isOk()
