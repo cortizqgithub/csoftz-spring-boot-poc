@@ -1,6 +1,6 @@
 = CSoftZ Spring Boot POC (devops) README
 
-V0.0.4-RELEASE - 20190107
+V0.0.4-RELEASE - 20190307
  
 This is a project that includes many technologies as a way of learning. When Scope is changed, maybe another
 project is open to address other requirements.
@@ -12,8 +12,7 @@ The following list of components.
 * *JaCoCo Plugin* V0.8.3
 * *Lombok* V1.18.6 (curated from Spring Boot Starters).
 * *Spring Boot* V2.1.3 with the following modules: Spring WebFlux, Actuator, DevTools.
-* *Spring RestDocs* V2.0.3
-
+* *Spring RestDocs* V2.0.3, requires _Spring Framework_ 5.0.2 or later.
 
 For testing purposes
 
