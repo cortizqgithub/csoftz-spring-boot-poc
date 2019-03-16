@@ -11,7 +11,7 @@
  History
  Mar.01/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.controller;
+package com.example.devops.api.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -11,7 +11,7 @@
  History
  Mar.01/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.controller;
+package com.example.devops.api.controller;
 
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document;
 
@@ -32,7 +32,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
-@WebFluxTest
+@WebFluxTest(MessageController.class)
 public class MessageControllerTest {
     @Autowired
     private WebTestClient webTestClient;
