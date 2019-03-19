@@ -3,7 +3,7 @@
 /* Description:   Service implementation to handle Palindrome operations.     */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
+/* Last Modified: Mar.19/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -21,8 +21,8 @@ import org.springframework.stereotype.Service;
  * Service implementation to handle Palindrome operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Sep.10/2018
- * @since 1.8 (JDK), May.19/2018
+ * @version 1.3, Mar.16/2019
+ * @since 1.8 (JDK), Mar.19/2019
  */
 @Slf4j
 @Service
