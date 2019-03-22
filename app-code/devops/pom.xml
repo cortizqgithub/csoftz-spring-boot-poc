@@ -5,7 +5,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>devops</artifactId>
-    <version>0.0.5-RELEASE</version>
+    <version>0.0.6-RELEASE</version>
     <packaging>jar</packaging>
 
     <name>devops</name>
@@ -23,6 +23,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
         <jacoco.version>0.8.3</jacoco.version>
+
+        <!-- These exclusions need exactly replicated in the jacoco plugins definition. -->
+        <sonar.exclusions>
+            **/SpringBootPOC.java,
+            **/config/*.java
+        </sonar.exclusions>
     </properties>
 
     <dependencies>
@@ -151,6 +157,13 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
+                <configuration>
+                    <!-- These exclusions need exactly replicated in the sonar.coverage.exclusion property. -->
+                    <excludes>
+                        <exclude>**/SpringBootPOC.java</exclude>
+                        <exclude>**/config/*.java</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>
