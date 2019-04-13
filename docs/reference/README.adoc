@@ -1,0 +1,7 @@
+= CSoftZ Spring Boot POC (Reference) README
+
+V0.0.1-RELEASE - 20190412
+
+20190322-V1.0.2 - V1.0.2-RELEASE
+ 
+Initial doc
