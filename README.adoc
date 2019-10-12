@@ -1,5 +1,5 @@
 = CSoftZ Spring Boot POC (csoftz-spring-boot-poc) README
 
-20190322-V1.0.2
+20191011-V1.0.3
 
 Here you will find anything I learn new/old/updated about the Spring Boot Ecosystem.
