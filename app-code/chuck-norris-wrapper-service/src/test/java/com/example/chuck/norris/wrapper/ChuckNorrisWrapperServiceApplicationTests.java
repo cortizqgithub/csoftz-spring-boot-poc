@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CHUCKNORRISWRAPPERSERVICEAPPLICATION.JAVA                   */
-/* Description:   Entry point to the application.                             */
+/* Source File:   CHUCKNORRISWRAPPERSERVICEAPPLICATIONTESTS.JAVA              */
+/* Description:   Spring Boot Context test.                                   */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.11/2019                                                 */
 /* Last Modified: Oct.11/2019                                                 */
@@ -11,28 +11,36 @@
  History
  Oct.11/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service;
+package com.example.chuck.norris.wrapper;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Entry point to the application.
+ * Spring Boot Context test.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Oct.11/2019
  * @since 11 (JDK), Oct.11/2019
  */
-@SpringBootApplication
-public class ChuckNorrisWrapperServiceApplication {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ChuckNorrisWrapperServiceApplicationTests {
+	@Autowired
+	private ApplicationContext appContext;
 
-    /**
-     * Main entry point to application.
-     *
-     * @param args Command line arguments.
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(ChuckNorrisWrapperServiceApplication.class, args);
-    }
+	/**
+	 * Load Spring Boot App to validate it is well configured.
+	 */
+	@Test
+	public void contextLoads() {
+		assertThat(appContext).isNotNull();
+	}
 
 }

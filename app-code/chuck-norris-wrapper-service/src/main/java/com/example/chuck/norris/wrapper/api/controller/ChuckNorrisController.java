@@ -11,7 +11,7 @@
  History
  Oct.11/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service.api.controller;
+package com.example.chuck.norris.wrapper.api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
-import com.example.chuck.norris.wrapper.service.domain.ChuckNorrisData;
-import com.example.chuck.norris.wrapper.service.domain.wrapper.ChuckNorrisDataWrapper;
+import com.example.chuck.norris.wrapper.domain.ChuckNorrisData;
+import com.example.chuck.norris.wrapper.domain.wrapper.ChuckNorrisDataWrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;

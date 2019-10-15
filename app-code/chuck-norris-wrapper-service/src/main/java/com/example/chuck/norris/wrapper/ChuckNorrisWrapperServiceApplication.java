@@ -1,7 +1,6 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CHUCKNORRISDATAWRAPPER.JAVA                                 */
-/* Description:   Domain model to map information from Chuck Norris Apiv      */
-/*                endpoint.                                                   */
+/* Source File:   CHUCKNORRISWRAPPERSERVICEAPPLICATION.JAVA                   */
+/* Description:   Entry point to the application.                             */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.11/2019                                                 */
 /* Last Modified: Oct.11/2019                                                 */
@@ -12,31 +11,28 @@
  History
  Oct.11/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service.domain.wrapper;
+package com.example.chuck.norris.wrapper;
 
-import com.example.chuck.norris.wrapper.service.domain.ChuckNorrisData;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.Builder;
-import lombok.Data;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Domain model to wrap information around {@link ChuckNorrisData}.
- * Here we add a UUID id.
- *
- * @see <a href="https://www.baeldung.com/java-uuid">Guide to UUID in Java!</a>}
+ * Entry point to the application.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Oct.11/2019
  * @since 11 (JDK), Oct.11/2019
  */
+@SpringBootApplication
+public class ChuckNorrisWrapperServiceApplication {
 
-@Data
-@Builder
-public class ChuckNorrisDataWrapper {
-    @JsonProperty("wrap_id")
-    private String wrapId;
+    /**
+     * Main entry point to application.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(ChuckNorrisWrapperServiceApplication.class, args);
+    }
 
-    @JsonProperty("chuck_norris_data")
-    private ChuckNorrisData chuckNorrisData;
 }

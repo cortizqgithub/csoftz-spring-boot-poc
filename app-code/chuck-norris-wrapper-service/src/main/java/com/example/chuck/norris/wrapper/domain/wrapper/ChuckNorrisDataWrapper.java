@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CHUCKNORRISDATA.JAVA                                        */
+/* Source File:   CHUCKNORRISDATAWRAPPER.JAVA                                 */
 /* Description:   Domain model to map information from Chuck Norris Apiv      */
 /*                endpoint.                                                   */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
@@ -12,39 +12,31 @@
  History
  Oct.11/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service.domain;
+package com.example.chuck.norris.wrapper.domain.wrapper;
 
+import com.example.chuck.norris.wrapper.domain.ChuckNorrisData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
- * Domain model to map information from Chuck Norris Api endpoint.
+ * Domain model to wrap information around {@link ChuckNorrisData}.
+ * Here we add a UUID id.
+ *
+ * @see <a href="https://www.baeldung.com/java-uuid">Guide to UUID in Java!</a>}
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Oct.11/2019
  * @since 11 (JDK), Oct.11/2019
  */
+
 @Data
-public class ChuckNorrisData {
-    @JsonProperty("categories")
-    private Object[] categories;
+@Builder
+public class ChuckNorrisDataWrapper {
+    @JsonProperty("wrap_id")
+    private String wrapId;
 
-    @JsonProperty("created_at")
-    private String createdAt;
-
-    @JsonProperty("icon_url")
-    private String iconURL;
-
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("updated_at")
-    private String updatedAt;
-
-    @JsonProperty("url")
-    private String url;
-
-    @JsonProperty("value")
-    private String value;
+    @JsonProperty("chuck_norris_data")
+    private ChuckNorrisData chuckNorrisData;
 }

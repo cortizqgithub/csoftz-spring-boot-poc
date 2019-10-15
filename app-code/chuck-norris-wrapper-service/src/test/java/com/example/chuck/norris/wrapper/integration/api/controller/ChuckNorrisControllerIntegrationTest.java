@@ -12,7 +12,7 @@
  History
  Oct.15/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service.integration.api.controller;
+package com.example.chuck.norris.wrapper.integration.api.controller;
 
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -25,7 +25,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import com.example.chuck.norris.wrapper.service.api.controller.ChuckNorrisController;
+import com.example.chuck.norris.wrapper.api.controller.ChuckNorrisController;
 
 /**
  * REST Api for ChuckNorrisData and ChuckNorrisWrapperData end-points.
