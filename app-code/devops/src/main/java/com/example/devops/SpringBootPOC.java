@@ -21,7 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Mar.16/2019
- * @since 1.8 (JDK), Mar.01/2019
+ * @since 11 (JDK), Mar.01/2019
  */
 @SpringBootApplication
 public class SpringBootPOC {

@@ -3,7 +3,7 @@
 /* Description:   Util for Person tasks.                                      */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -14,14 +14,15 @@
 package com.example.devops.util;
 
 import com.example.devops.domain.Person;
+
 import lombok.extern.log4j.Log4j2;
 
 /**
  * Util for Person tasks.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.16/2019
- * @since 1.8 (JDK), Mar.01/2019
+ * @version 1.1, Oct.15/2019
+ * @since 11 (JDK), Mar.01/2019
  */
 @Log4j2
 public class PersonPrinter {

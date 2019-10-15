@@ -2,8 +2,8 @@ package com.example.devops.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.example.devops.domain.Person;
 import org.junit.Test;
+import com.example.devops.domain.Person;
 
 /**
  * This is part of a demo in supressing lombok annotated classes from coverage, in JaCoCo and in SonarQube.

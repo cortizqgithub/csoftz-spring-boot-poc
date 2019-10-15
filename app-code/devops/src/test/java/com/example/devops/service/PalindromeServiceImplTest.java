@@ -4,7 +4,7 @@
 /*                (Tests).                                                    */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -16,16 +16,16 @@ package com.example.devops.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.example.devops.service.intr.PalindromeService;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import com.example.devops.service.intr.PalindromeService;
 
 /**
  * Service implementation to handle Palindrome operations (Tests).
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.16/2019
- * @since 1.8 (JDK), Mar.16/2019
+ * @version 1.1, Oct.15/2019
+ * @since 11 (JDK), Mar.16/2019
  */
 public class PalindromeServiceImplTest {
     /*

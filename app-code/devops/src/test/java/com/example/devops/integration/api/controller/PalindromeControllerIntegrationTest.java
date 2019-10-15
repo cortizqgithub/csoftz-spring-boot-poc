@@ -3,7 +3,7 @@
 /* Description:   REST Api for Palindrome end-points (Tests).                 */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -40,8 +40,8 @@ import org.springframework.test.web.servlet.MockMvc;
  * This is an integration test as it loads the whole context to test the web layer.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Mar.16/2019
- * @since 1.8 (JDK), Mar.16/2019
+ * @version 1.3, Oct.15/2019
+ * @since 11 (JDK), Mar.16/2019
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -61,8 +61,8 @@ public class PalindromeControllerIntegrationTest {
      */
     @Test
     public void givenPalindromeControllerWhenSettingAPalindromeTextReturnsTrue() throws Exception {
-        String URI = PALINDROME_URL + "?t=A nut for a jar of tuna";
-        mockMvc.perform(get(URI))
+        String PALINDROME_FULL_URL = PALINDROME_URL + "?t=A nut for a jar of tuna";
+        mockMvc.perform(get(PALINDROME_FULL_URL))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath("$").isBoolean())

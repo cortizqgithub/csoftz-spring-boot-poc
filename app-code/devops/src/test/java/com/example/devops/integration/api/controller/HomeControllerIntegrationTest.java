@@ -3,7 +3,7 @@
 /* Description:   Test REST Api for Home end-points.                          */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -15,17 +15,14 @@ package com.example.devops.integration.api.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
-import static org.springframework.restdocs.operation.preprocess.Preprocessors.removeHeaders;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.devops.api.controller.HomeController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +31,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import com.example.devops.api.controller.HomeController;
 
 /**
  * Test REST Api for Home end-points.
@@ -41,8 +39,8 @@ import org.springframework.test.web.servlet.MockMvc;
  * <a href="https://spring.io/guides/gs/testing-restdocs/#initial">Spring Rest Docs Guide</a>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.16/2019
- * @since 1.8 (JDK), Mar.01/2019
+ * @version 1.1, Oct.15/2019
+ * @since 11 (JDK), Mar.01/2019
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)

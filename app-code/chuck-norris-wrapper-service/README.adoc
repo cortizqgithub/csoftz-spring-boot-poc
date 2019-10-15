@@ -1,9 +1,11 @@
-= CSoftZ Spring Boot POC (devops) README
+= CSoftZ Spring Boot POC (chuck-norris-wrapper-service) README
 
-V0.0.6-RELEASE - 20190316 This is a project that includes many technologies as a way of learning.
-When Scope is changed, maybe another project is open to address other requirements.
+V0.0.2-RELEASE - 20191015
 
-This is a general purpose project as a learning aid for different configurations and technologies being learnt.
+This project only holds Spring Web Flux related only stuff. It is a REST API end-point to wrap calls for the
+https://api.chucknorris.io[chucknorris.io is a free JSON API for hand curated Chuck Norris facts].
+
+This REST end-point is built only for POC and educational purposes.
 
 The following is the list of components used.
 

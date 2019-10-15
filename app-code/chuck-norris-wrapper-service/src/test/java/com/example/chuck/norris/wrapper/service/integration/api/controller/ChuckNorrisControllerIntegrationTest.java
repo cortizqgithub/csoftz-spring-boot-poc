@@ -1,17 +1,18 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   MESSAGECONTROLLERINTEGRATIONTEST.JAVA                       */
-/* Description:   REST Api for Message end-points.                            */
+/* Description:   REST Api for ChuckNorrisData and ChuckNorrisWrapperData     */
+/*                end-points.                                                 */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
+/* Date:          Oct.15/2019                                                 */
 /* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
- Mar.01/2019  COQ  File created.
+ Oct.15/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.integration.api.controller;
+package com.example.chuck.norris.wrapper.service.integration.api.controller;
 
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -24,36 +25,36 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import com.example.devops.api.controller.MessageController;
+import com.example.chuck.norris.wrapper.service.api.controller.ChuckNorrisController;
 
 /**
- * Test REST Api for Message end-points.
+ * REST Api for ChuckNorrisData and ChuckNorrisWrapperData end-points.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Oct.15/2019
- * @since 11 (JDK), Mar.01/2019
+ * @since 11 (JDK), Oct.15/2019
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
-@WebFluxTest(MessageController.class)
-public class MessageControllerIntegrationTest {
-    private static final String MSG_SAY_URL = "/api/v1/msg/say";
+@WebFluxTest(ChuckNorrisController.class)
+public class ChuckNorrisControllerIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
 
     /**
-     * As MessageController is a WebFlux (it has Mono and Flux return types) it means that this test must use
+     * As ChuckNorrisController is a WebFlux (it has Mono and Flux return types) it means that this test must use
      * Spring WebFlux testing capabilities.
      */
     @Test
-    public void shouldReturnMessage() {
+    public void shouldReturnChuckNorrisData() {
         this.webTestClient.get()
-                .uri(MSG_SAY_URL)
+                .uri("/api/v1/chuck/norris/random/string")
                 .exchange()
                 .expectStatus()
                 .isOk()
                 .expectBody()
-                .consumeWith(document("message", preprocessResponse(prettyPrint())));
+                .consumeWith(document("random-string", preprocessResponse(prettyPrint()) ));
+
     }
 }

@@ -3,7 +3,7 @@
 /* Description:   REST Api for ChuckNorris end-point.                         */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.11/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -11,7 +11,7 @@
  History
  Oct.11/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.chuck.norris.wrapper.service.controller;
+package com.example.chuck.norris.wrapper.service.api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +32,12 @@ import reactor.core.publisher.Mono;
 
 /**
  * REST Api for ChuckNorris end-point.
+ * <p> This controller accesses the <a href="https://api.chucknorris.io">chucknorris.io is a free JSON API for hand curated Chuck Norris facts.</a>
+ * and as such it is considered as a wrapper to that service for educational purposes.
+ * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.11/2019
+ * @version 1.1, Oct.15/2019
  * @since 11 (JDK), Oct.11/2019
  */
 @RestController

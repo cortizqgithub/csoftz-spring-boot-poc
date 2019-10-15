@@ -3,7 +3,7 @@
 /* Description:   Spring Boot Context test.                                   */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Mar.22/2019                                                 */
+/* Last Modified: Oct.15/2019                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -26,8 +26,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Spring Boot Context test.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.22/2019
- * @since 1.8 (JDK), Mar.01/2019
+ * @version 1.1, Oct.15/2019
+ * @since 11 (JDK), Mar.01/2019
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
