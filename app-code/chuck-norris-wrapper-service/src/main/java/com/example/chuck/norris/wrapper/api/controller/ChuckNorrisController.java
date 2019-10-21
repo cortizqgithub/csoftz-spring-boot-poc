@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 import com.example.chuck.norris.wrapper.domain.ChuckNorrisData;
 import com.example.chuck.norris.wrapper.domain.wrapper.ChuckNorrisDataWrapper;
+import com.example.chuck.norris.wrapper.service.intr.JokesService;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -44,6 +44,16 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/v1/chuck/norris")
 @Slf4j
 public class ChuckNorrisController {
+    private JokesService jokesService;
+
+    /**
+     * Default constructor.
+     *
+     * @param jokesService Injects a reference for retrieving Chuck Norries Jokes.
+     */
+    public ChuckNorrisController(JokesService jokesService) {
+        this.jokesService = jokesService;
+    }
 
     /**
      * Retrieves a random Chuck Norris joke.<br/>
@@ -54,12 +64,7 @@ public class ChuckNorrisController {
     @GetMapping(value = "/random/string", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<String> retrieveRandomJokeWithString() {
         log.info("retrieveRandomJokeWithString");
-        return WebClient.create("https://api.chucknorris.io")
-                .get()
-                .uri("/jokes/random")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(String.class);
+        return jokesService.retrievePlainRandomJoke();
     }
 
     /**
@@ -71,12 +76,7 @@ public class ChuckNorrisController {
     @GetMapping("/random/chuck-norris-data")
     public Mono<ChuckNorrisData> retrieveRandomJokeWithChuckNorrisData() {
         log.info("retrieveRandomJokeWithChuckNorrisData");
-        return WebClient.create("https://api.chucknorris.io")
-                .get()
-                .uri("/jokes/random")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(ChuckNorrisData.class);
+        return jokesService.retrieveRandomJoke();
     }
 
     /**
@@ -88,9 +88,9 @@ public class ChuckNorrisController {
     @GetMapping(value = "/random/three/string", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<String> retrieveThreeRandomJokesWithString() {
         log.info("retrieveThreeRandomJokesWithString");
-        return Flux.concat(retrieveRandomJokeWithString())
-                .concatWith(retrieveRandomJokeWithString())
-                .concatWith(retrieveRandomJokeWithString());
+        return Flux.concat(jokesService.retrievePlainRandomJoke())
+                .concatWith(jokesService.retrievePlainRandomJoke())
+                .concatWith(jokesService.retrievePlainRandomJoke());
     }
 
     /**
@@ -102,9 +102,9 @@ public class ChuckNorrisController {
     @GetMapping("/random/three/chuck-norris-data")
     public Flux<ChuckNorrisData> retrieveFourRandomJokesWithChuckNorrisData() {
         log.info("retrieveFourRandomJokesWithChuckNorrisData");
-        return Flux.merge(retrieveRandomJokeWithChuckNorrisData())
-                .mergeWith(retrieveRandomJokeWithChuckNorrisData())
-                .mergeWith(retrieveRandomJokeWithChuckNorrisData());
+        return Flux.merge(jokesService.retrieveRandomJoke())
+                .mergeWith(jokesService.retrieveRandomJoke())
+                .mergeWith(jokesService.retrieveRandomJoke());
     }
 
     /**
@@ -120,7 +120,7 @@ public class ChuckNorrisController {
         List<Mono<ChuckNorrisData>> publishers = new ArrayList<>();
 
         for (int i = 0; i < times; i++) {
-            publishers.add(retrieveRandomJokeWithChuckNorrisData());
+            publishers.add(jokesService.retrieveRandomJoke());
         }
         return Flux.merge(publishers);
     }
@@ -132,14 +132,32 @@ public class ChuckNorrisController {
      * @return A JSON representing Chuck Norris joke in a '{@link ChuckNorrisDataWrapper}' object.
      */
     @GetMapping("/random/chuck-norris-data/wrapped")
-    public Mono<ChuckNorrisDataWrapper> wrapKK() {
+    public Mono<ChuckNorrisDataWrapper> retrieveChuckNorrisDataWrap() {
         // https://www.baeldung.com/java-uuid
-        return WebClient.create("https://api.chucknorris.io")
-                .get()
-                .uri("/jokes/random")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(ChuckNorrisData.class)
+        return jokesService.retrieveRandomJoke()
+                .map(s -> {
+                    return ChuckNorrisDataWrapper.builder()
+                            .wrapId(UUID.randomUUID().toString())
+                            .chuckNorrisData(s)
+                            .build();
+                });
+    }
+
+    /**
+     * Retrieves a Chuck Norris joke.<br/>
+     * GET /random/{times}/chuck-norris-data/wrapped
+     *
+     * @return A JSON representing Chuck Norris joke in a '{@link ChuckNorrisDataWrapper}' object.
+     */
+    @GetMapping("/random/{times}/chuck-norris-data/wrapped")
+    public Flux<ChuckNorrisDataWrapper> retrieveTimesRandomJokesWithChuckNorrisDataWrapper(@PathVariable int times) {
+        log.info("retrieveRandomJokeWithString");
+        List<Mono<ChuckNorrisData>> publishers = new ArrayList<>();
+
+        for (int i = 0; i < times; i++) {
+            publishers.add(jokesService.retrieveRandomJoke());
+        }
+        return Flux.merge(publishers)
                 .map(s -> {
                     return ChuckNorrisDataWrapper.builder()
                             .wrapId(UUID.randomUUID().toString())

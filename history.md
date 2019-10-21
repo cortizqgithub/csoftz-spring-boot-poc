@@ -1,8 +1,12 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Oct.11/2019/2019
+Modified: Oct.21/2019
 
+Oct.21/2019 V1.0.4 Tag: 20191021-V1.0.4
+- Refactoring to ChuckNorris service.
+  Upgrades to Spring Boot 2.2.0
+  
 Oct.11/2019 V1.0.3 Tag: 20191011-V1.0.3
 - Adds a new microservice sample.
   This plays around the Chuck Norris Jokes Free API at https://api.chucknorris.io

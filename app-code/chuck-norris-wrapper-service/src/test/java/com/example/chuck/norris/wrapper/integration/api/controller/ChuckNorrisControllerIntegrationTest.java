@@ -55,6 +55,5 @@ public class ChuckNorrisControllerIntegrationTest {
                 .isOk()
                 .expectBody()
                 .consumeWith(document("random-string", preprocessResponse(prettyPrint()) ));
-
     }
 }
