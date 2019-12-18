@@ -1,7 +1,10 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Oct.21/2019
+Modified: Dec.17/2019
+
+Dec.17/2019 V1.0.5 Tag: 20191217-V1.0.5
+- Adds sonar properties to take care by maven plugin in all pom.xml files.
 
 Oct.21/2019 V1.0.4 Tag: 20191021-V1.0.4
 - Refactoring to ChuckNorris service.
