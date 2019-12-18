@@ -1,6 +1,6 @@
 = CSoftZ Spring Boot POC (chuck-norris-wrapper-service) README
 
-V0.0.3-RELEASE - 20191021
+V0.0.4-RELEASE - 20191217
 
 This project only holds Spring Web Flux related only stuff. It is a REST API end-point to wrap calls for the
 https://api.chucknorris.io[chucknorris.io is a free JSON API for hand curated Chuck Norris facts].
@@ -11,7 +11,7 @@ The following is the list of components used.
 
 * *JaCoCo Plugin* V0.8.5
 * *Lombok* V1.18.10 (curated from Spring Boot Starters).
-* *Spring Boot* V2.2.0 with the following modules: Spring WebFlux, Actuator, DevTools.
+* *Spring Boot* V2.2.2 with the following modules: Spring WebFlux, Actuator, DevTools.
 * *Spring RestDocs* V2.0.4, requires _Spring Framework_ 5.0.2 or later.
 
 For testing purposes

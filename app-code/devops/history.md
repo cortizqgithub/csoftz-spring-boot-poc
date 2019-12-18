@@ -1,7 +1,10 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Oct.21/2019
+Modified: Dec.17/2019
+
+Dec.17/2019 V0.0.4-RELEASE
+- Adds sonar properties to take care by maven plugin.
 
 Oct.21/2019 V0.0.7-RELEASE
 - Project dependencies upgrade.
