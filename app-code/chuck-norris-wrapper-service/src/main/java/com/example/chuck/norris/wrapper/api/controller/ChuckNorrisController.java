@@ -3,9 +3,9 @@
 /* Description:   REST Api for ChuckNorris end-point.                         */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.chuck.norris.wrapper.domain.ChuckNorrisData;
 import com.example.chuck.norris.wrapper.domain.wrapper.ChuckNorrisDataWrapper;
 import com.example.chuck.norris.wrapper.service.intr.JokesService;
@@ -37,14 +38,14 @@ import reactor.core.publisher.Mono;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
+ * @version 1.1, Jul.05/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @RestController
 @RequestMapping("/api/v1/chuck/norris")
 @Slf4j
 public class ChuckNorrisController {
-    private JokesService jokesService;
+    private final JokesService jokesService;
 
     /**
      * Default constructor.
@@ -88,9 +89,10 @@ public class ChuckNorrisController {
     @GetMapping(value = "/random/three/string", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<String> retrieveThreeRandomJokesWithString() {
         log.info("retrieveThreeRandomJokesWithString");
-        return Flux.concat(jokesService.retrievePlainRandomJoke())
-                .concatWith(jokesService.retrievePlainRandomJoke())
-                .concatWith(jokesService.retrievePlainRandomJoke());
+        return Flux
+            .concat(jokesService.retrievePlainRandomJoke())
+            .concatWith(jokesService.retrievePlainRandomJoke())
+            .concatWith(jokesService.retrievePlainRandomJoke());
     }
 
     /**
@@ -103,8 +105,8 @@ public class ChuckNorrisController {
     public Flux<ChuckNorrisData> retrieveFourRandomJokesWithChuckNorrisData() {
         log.info("retrieveFourRandomJokesWithChuckNorrisData");
         return Flux.merge(jokesService.retrieveRandomJoke())
-                .mergeWith(jokesService.retrieveRandomJoke())
-                .mergeWith(jokesService.retrieveRandomJoke());
+            .mergeWith(jokesService.retrieveRandomJoke())
+            .mergeWith(jokesService.retrieveRandomJoke());
     }
 
     /**
@@ -135,12 +137,12 @@ public class ChuckNorrisController {
     public Mono<ChuckNorrisDataWrapper> retrieveChuckNorrisDataWrap() {
         // https://www.baeldung.com/java-uuid
         return jokesService.retrieveRandomJoke()
-                .map(s -> {
-                    return ChuckNorrisDataWrapper.builder()
-                            .wrapId(UUID.randomUUID().toString())
-                            .chuckNorrisData(s)
-                            .build();
-                });
+            .map(s -> {
+                return ChuckNorrisDataWrapper.builder()
+                    .wrapId(UUID.randomUUID().toString())
+                    .chuckNorrisData(s)
+                    .build();
+            });
     }
 
     /**
@@ -158,11 +160,11 @@ public class ChuckNorrisController {
             publishers.add(jokesService.retrieveRandomJoke());
         }
         return Flux.merge(publishers)
-                .map(s -> {
-                    return ChuckNorrisDataWrapper.builder()
-                            .wrapId(UUID.randomUUID().toString())
-                            .chuckNorrisData(s)
-                            .build();
-                });
+            .map(s -> {
+                return ChuckNorrisDataWrapper.builder()
+                    .wrapId(UUID.randomUUID().toString())
+                    .chuckNorrisData(s)
+                    .build();
+            });
     }
 }

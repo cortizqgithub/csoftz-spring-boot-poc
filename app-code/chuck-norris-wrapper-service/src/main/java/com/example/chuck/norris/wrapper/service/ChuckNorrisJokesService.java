@@ -4,9 +4,9 @@
 /*                Chuck Norris. (Service implementations).                    */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.21/2019                                                 */
-/* Last Modified: Oct.21/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
 import com.example.chuck.norris.wrapper.domain.ChuckNorrisData;
 import com.example.chuck.norris.wrapper.service.intr.JokesService;
 
@@ -29,12 +30,12 @@ import reactor.core.publisher.Mono;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
+ * @version 1.1, Jul.05/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @Service
 public class ChuckNorrisJokesService implements JokesService {
-    private String chuckNorrisServiceURL;
+    private final String chuckNorrisServiceURL;
 
     /**
      * Build the service component.
@@ -53,11 +54,11 @@ public class ChuckNorrisJokesService implements JokesService {
     @Override
     public Mono<String> retrievePlainRandomJoke() {
         return WebClient.create(chuckNorrisServiceURL)
-                .get()
-                .uri("/jokes/random")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(String.class);
+            .get()
+            .uri("/jokes/random")
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(String.class);
     }
 
     /**
@@ -69,10 +70,10 @@ public class ChuckNorrisJokesService implements JokesService {
     @Override
     public Mono<ChuckNorrisData> retrieveRandomJoke() {
         return WebClient.create(chuckNorrisServiceURL)
-                .get()
-                .uri("/jokes/random")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(ChuckNorrisData.class);
+            .get()
+            .uri("/jokes/random")
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(ChuckNorrisData.class);
     }
 }

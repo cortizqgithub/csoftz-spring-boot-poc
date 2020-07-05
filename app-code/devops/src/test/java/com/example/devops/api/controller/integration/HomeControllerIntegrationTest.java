@@ -3,15 +3,15 @@
 /* Description:   Test REST Api for Home end-points.                          */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
+/* Last Modified: Jan.27/2020                                                 */
 /* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
  Mar.01/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.integration.api.controller;
+package com.example.devops.api.controller.integration;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -31,6 +31,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
 import com.example.devops.api.controller.HomeController;
 
 /**
@@ -39,7 +40,7 @@ import com.example.devops.api.controller.HomeController;
  * <a href="https://spring.io/guides/gs/testing-restdocs/#initial">Spring Rest Docs Guide</a>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
+ * @version 1.1, Jan.27/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @RunWith(SpringRunner.class)
@@ -61,13 +62,13 @@ public class HomeControllerIntegrationTest {
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get(HOME_URL).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello World")))
-                .andDo(document("home",
-                        preprocessResponse(prettyPrint()),
-                        responseFields(
-                                fieldWithPath("message").description("The welcome message for the user.")
-                        )
-                ));
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Hello World")))
+            .andDo(document("home",
+                preprocessResponse(prettyPrint()),
+                responseFields(
+                    fieldWithPath("message").description("The welcome message for the user.")
+                )
+            ));
     }
 }

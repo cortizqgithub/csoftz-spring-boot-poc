@@ -4,9 +4,9 @@
 /*                Chuck Norris.                                               */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.21/2019                                                 */
-/* Last Modified: Oct.21/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -24,18 +24,20 @@ import reactor.core.publisher.Mono;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
+ * @version 1.1, Jul.05/2020
  * @since 11 (JDK), Oct.11/2019
  */
 public interface JokesService {
     /**
      * Retrieves a random Joke about Chuck Norris.
+     *
      * @return The JSON output from external service.
      */
     Mono<String> retrievePlainRandomJoke();
 
     /**
      * Retrieves a random Joke about Chuck Norris.
+     *
      * @return The external service response serialized.
      * @link ChuckNorrisData
      */

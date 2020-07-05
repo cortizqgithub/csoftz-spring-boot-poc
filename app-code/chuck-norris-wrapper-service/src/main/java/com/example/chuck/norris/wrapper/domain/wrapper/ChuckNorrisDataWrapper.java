@@ -24,10 +24,9 @@ import lombok.Data;
  * Domain model to wrap information around {@link ChuckNorrisData}.
  * Here we add a UUID id.
  *
- * @see <a href="https://www.baeldung.com/java-uuid">Guide to UUID in Java!</a>}
- *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
  * @version 1.1, Oct.11/2019
+ * @see <a href="https://www.baeldung.com/java-uuid">Guide to UUID in Java!</a>}
  * @since 11 (JDK), Oct.11/2019
  */
 

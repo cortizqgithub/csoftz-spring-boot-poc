@@ -1,17 +1,18 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   MESSAGECONTROLLERINTEGRATIONTEST.JAVA                       */
-/* Description:   REST Api for Message end-points.                            */
+/* Description:   REST Api for ChuckNorrisData and ChuckNorrisWrapperData     */
+/*                end-points.                                                 */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
+/* Date:          Oct.15/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
- Mar.01/2019  COQ  File created.
+ Oct.15/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.integration.api.controller;
+package com.example.chuck.norris.wrapper.api.controller.integration;
 
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -22,38 +23,43 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import com.example.devops.api.controller.MessageController;
+
+import com.example.chuck.norris.wrapper.api.controller.ChuckNorrisController;
+import com.example.chuck.norris.wrapper.service.ChuckNorrisJokesService;
 
 /**
- * Test REST Api for Message end-points.
+ * <p>REST Api for ChuckNorrisData and ChuckNorrisWrapperData end-points.</p>
+ * <p>As this is an integration test all of external services must be injected. That is why the @Import is there.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
- * @since 11 (JDK), Mar.01/2019
+ * @version 1.1, Jul.05/2020
+ * @since 11 (JDK), Oct.15/2019
  */
 @RunWith(SpringRunner.class)
 @AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
-@WebFluxTest(MessageController.class)
-public class MessageControllerIntegrationTest {
-    private static final String MSG_SAY_URL = "/api/v1/msg/say";
+@WebFluxTest(ChuckNorrisController.class)
+@Import(ChuckNorrisJokesService.class)
+public class ChuckNorrisControllerIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
 
     /**
-     * As MessageController is a WebFlux (it has Mono and Flux return types) it means that this test must use
+     * As ChuckNorrisController is a WebFlux (it has Mono and Flux return types) it means that this test must use
      * Spring WebFlux testing capabilities.
      */
     @Test
-    public void shouldReturnMessage() {
-        this.webTestClient.get()
-                .uri(MSG_SAY_URL)
-                .exchange()
-                .expectStatus()
-                .isOk()
-                .expectBody()
-                .consumeWith(document("message", preprocessResponse(prettyPrint())));
+    public void shouldReturnChuckNorrisData() {
+        this.webTestClient
+            .get()
+            .uri("/api/v1/chuck/norris/random/string")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody()
+            .consumeWith(document("random-string", preprocessResponse(prettyPrint())));
     }
 }

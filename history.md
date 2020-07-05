@@ -1,7 +1,11 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Dec.17/2019
+Modified: Jul.05/2020
+
+Jul.05/2020 V1.0.6 Tag: 20200705-V1.0.6
+- Add Formatting code to all files with new settings.
+- Updates release docs.
 
 Dec.17/2019 V1.0.5 Tag: 20191217-V1.0.5
 - Adds sonar properties to take care by maven plugin in all pom.xml files.

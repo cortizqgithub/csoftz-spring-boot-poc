@@ -3,15 +3,15 @@
 /* Description:   REST Api for Palindrome end-points (Tests).                 */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
-/* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Last Modified: Jan.27/2020                                                 */
+/* Version:       1.3                                                         */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
  Mar.16/2019  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.integration.api.controller;
+package com.example.devops.api.controller.integration;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -40,7 +41,7 @@ import org.springframework.test.web.servlet.MockMvc;
  * This is an integration test as it loads the whole context to test the web layer.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Oct.15/2019
+ * @version 1.3, Jan.27/2020
  * @since 11 (JDK), Mar.16/2019
  */
 @RunWith(SpringRunner.class)
@@ -63,16 +64,16 @@ public class PalindromeControllerIntegrationTest {
     public void givenPalindromeControllerWhenSettingAPalindromeTextReturnsTrue() throws Exception {
         String PALINDROME_FULL_URL = PALINDROME_URL + "?t=A nut for a jar of tuna";
         mockMvc.perform(get(PALINDROME_FULL_URL))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(jsonPath("$").isBoolean())
-                .andExpect(jsonPath("$").value(true))
-                .andDo(document("palindrome/valid",
-                        preprocessResponse(prettyPrint()),
-                        requestParameters(
-                                parameterWithName("t").description(URI_PARAM_PALINDROME_TEXT)
-                        )
-                ));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$").isBoolean())
+            .andExpect(jsonPath("$").value(true))
+            .andDo(document("palindrome/valid",
+                preprocessResponse(prettyPrint()),
+                requestParameters(
+                    parameterWithName("t").description(URI_PARAM_PALINDROME_TEXT)
+                )
+            ));
     }
 
     /**
@@ -84,15 +85,15 @@ public class PalindromeControllerIntegrationTest {
     public void givenPalindromeControllerWhenSettingANonPalindromeTextReturnsTrue() throws Exception {
         String URI = PALINDROME_URL + "?t=Car";
         mockMvc.perform(get(URI))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(jsonPath("$").isBoolean())
-                .andExpect(jsonPath("$").value(false))
-                .andDo(document("palindrome/invalid",
-                        preprocessResponse(prettyPrint()),
-                        requestParameters(
-                                parameterWithName("t").description(URI_PARAM_PALINDROME_TEXT)
-                        )
-                ));
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$").isBoolean())
+            .andExpect(jsonPath("$").value(false))
+            .andDo(document("palindrome/invalid",
+                preprocessResponse(prettyPrint()),
+                requestParameters(
+                    parameterWithName("t").description(URI_PARAM_PALINDROME_TEXT)
+                )
+            ));
     }
 }

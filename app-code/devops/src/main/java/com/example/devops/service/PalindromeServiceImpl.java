@@ -3,7 +3,7 @@
 /* Description:   Service implementation to handle Palindrome operations.     */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.3                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -14,6 +14,7 @@
 package com.example.devops.service;
 
 import org.springframework.stereotype.Service;
+
 import com.example.devops.service.intr.PalindromeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  * Service implementation to handle Palindrome operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Oct.15/2019
+ * @version 1.3, Jul.05/2020
  * @since 11 (JDK), Mar.19/2019
  */
 @Slf4j
@@ -43,16 +44,16 @@ public class PalindromeServiceImpl implements PalindromeService {
             return false;
         }
         String infoWork =
-                info.toLowerCase()
-                        .trim()
-                        .replace(" ", "");
+            info.toLowerCase()
+                .trim()
+                .replace(" ", "");
         String infoReversed =
-                new StringBuilder(info)
-                        .reverse()
-                        .toString()
-                        .toLowerCase()
-                        .trim()
-                        .replace(" ", "");
+            new StringBuilder(info)
+                .reverse()
+                .toString()
+                .toLowerCase()
+                .trim()
+                .replace(" ", "");
 
         return infoWork.equalsIgnoreCase(infoReversed);
     }

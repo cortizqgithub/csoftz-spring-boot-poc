@@ -5,19 +5,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>chuck-norris-wrapper-service</artifactId>
-    <version>0.0.4-RELEASE</version>
+    <version>0.0.6-RELEASE</version>
     <name>chuck-norris-wrapper-service</name>
     <description>A Chuck Norries Jokes wrapper service using Reactive Programming.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
+        <java.version>14</java.version>
         <jacoco.version>0.8.5</jacoco.version>
         <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
 
@@ -46,6 +46,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -153,8 +158,8 @@
                 <configuration>
                     <!-- These exclusions need exactly replicated in the sonar.coverage.exclusion property. -->
                     <excludes>
-                        <exclude>**/ChuckNorrisWrapperServiceApplication.java</exclude>
-                        <exclude>**/config/*.java</exclude>
+                        <exclude>**/ChuckNorrisWrapperServiceApplication.class</exclude>
+                        <exclude>**/config/*.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -183,8 +188,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
         </plugins>
     </build>
 

@@ -1,0 +1,9 @@
+logging:
+  level:
+    org.springframework.web: INFO
+    com.example.devops: TRACE
+
+com:
+  csoftz:
+    url: http://sample.com
+    time-out-in-milliseconds: 1000

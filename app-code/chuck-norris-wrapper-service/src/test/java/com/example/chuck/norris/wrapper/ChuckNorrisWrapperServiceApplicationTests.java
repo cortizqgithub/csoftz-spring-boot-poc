@@ -3,7 +3,7 @@
 /* Description:   Spring Boot Context test.                                   */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.11/2019                                                 */
+/* Last Modified: Jul.05/2020                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -26,21 +26,21 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Spring Boot Context test.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.11/2019
+ * @version 1.1, Jul.05/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ChuckNorrisWrapperServiceApplicationTests {
-	@Autowired
-	private ApplicationContext appContext;
+    @Autowired
+    private ApplicationContext appContext;
 
-	/**
-	 * Load Spring Boot App to validate it is well configured.
-	 */
-	@Test
-	public void contextLoads() {
-		assertThat(appContext).isNotNull();
-	}
+    /**
+     * Load Spring Boot App to validate it is well configured.
+     */
+    @Test
+    public void contextLoads() {
+        assertThat(appContext).isNotNull();
+    }
 
 }
