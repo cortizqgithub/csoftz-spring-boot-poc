@@ -27,7 +27,7 @@
 
         <!-- this classes should be excluded from Sonar analysis -->
         <sonar.coverage.exclusions>
-            **/ChuckNorrisWrapperServiceApplication.java
+            **/ChuckNorrisWrapperServiceApplication.java,
             **/config/*.java
         </sonar.coverage.exclusions>
     </properties>

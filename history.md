@@ -1,7 +1,10 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Jul.05/2020
+Modified: Jul.07/2020
+
+Jul.07/2020 V1.0.7 Tag: 20200707-V1.0.7
+- Fix JaCoCo lists in POM.XML
 
 Jul.05/2020 V1.0.6 Tag: 20200705-V1.0.6
 - Add Formatting code to all files with new settings.

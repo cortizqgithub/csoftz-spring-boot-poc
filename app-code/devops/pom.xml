@@ -31,7 +31,7 @@
 
         <!-- These exclusions need exactly replicated in the jacoco plugins definition. -->
         <sonar.exclusions>
-            **/SpringBootPOC.java
+            **/SpringBootPOC.java,
             **/config/**/*
         </sonar.exclusions>
     </properties>
