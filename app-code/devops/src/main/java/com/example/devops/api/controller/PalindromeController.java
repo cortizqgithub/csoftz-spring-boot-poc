@@ -3,9 +3,9 @@
 /* Description:   REST Api for Palindrome end-points.                         */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.16/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
-/* Version:       1.3                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Last Modified: Jul.24/2020                                                 */
+/* Version:       1.4                                                         */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -20,32 +20,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.devops.service.intr.PalindromeService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * REST Api for Palindrome end-points.
- * Demo purpose for a Spring REST Docs sample
+ * REST API for Palindrome end-points.
+ * <p><b>NOTE:</b>This controller uses Spring MVC, this means it is non-reactive.</p>
+ * <p>Demo purpose for a Spring REST Docs sample
  * <a href="https://spring.io/guides/gs/testing-restdocs/#initial">Spring Rest Docs Guide</a>
+ * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Oct.15/2019
+ * @version 1.4, Jul.24/2020
  * @since 11 (JDK), Mar.16/2019
  */
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/palindrome")
+@RequiredArgsConstructor
 public class PalindromeController {
 
-    private final PalindromeService palindromeService;
+    private static final String CHECKING_FOR_A_PALINDROME = "Checking t=[{}] is a palindrome={}";
 
-    /**
-     * Constructor with parameters.
-     *
-     * @param palindromeService Inject a service to check palindrome texts.
-     */
-    public PalindromeController(PalindromeService palindromeService) {
-        this.palindromeService = palindromeService;
-    }
+    private final PalindromeService palindromeService;
 
     /**
      * Given text in URL checks if it is a Palindrome
@@ -56,8 +53,8 @@ public class PalindromeController {
     @GetMapping("/check")
     public Boolean checkPalindromeFor(@RequestParam String t) {
         Boolean rslt = this.palindromeService.check(t);
-        String msg = String.format("t=[%s] is a palindrome=%b", t, rslt);
-        log.debug(msg);
+
+        log.debug(CHECKING_FOR_A_PALINDROME, t, rslt);
         return rslt;
     }
 }

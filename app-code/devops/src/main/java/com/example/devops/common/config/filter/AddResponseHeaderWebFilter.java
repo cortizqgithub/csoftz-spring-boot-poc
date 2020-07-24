@@ -3,15 +3,15 @@
 /* Description:   Web Filter in Reactive stack.                               */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Jan.23/2020                                                 */
-/* Last Modified: Jan.23/2020                                                 */
-/* Version:       1.1                                                         */
+/* Last Modified: Jul.24/2020                                                 */
+/* Version:       1.2                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
  Jan.23/2020  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.config.filter;
+package com.example.devops.common.config.filter;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -30,7 +30,7 @@ import reactor.core.publisher.Mono;
  * <p>This filter adds the X-all-media to all responses.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.23/2020
+ * @version 1.2, Jul.24/2020
  * @since 11 (JDK), Jan.23/2020
  */
 @Component
@@ -40,6 +40,7 @@ public class AddResponseHeaderWebFilter implements WebFilter {
 
     private static final String X_ALL_MEDIA_HDR = "X-all-media";
     private static final String X_ALL_MEDIA_HDR_VALUE = "All Media";
+    private static final String EXECUTING_FILTER_TO_ADD = "Executing filter to add {}";
 
     /**
      * Adds the 'X-all-media' header key/value to the Response to caller.
@@ -50,7 +51,7 @@ public class AddResponseHeaderWebFilter implements WebFilter {
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        log.info("Executing filter to add {}", X_ALL_MEDIA_HDR);
+        log.debug(EXECUTING_FILTER_TO_ADD, X_ALL_MEDIA_HDR);
         exchange.getResponse()
             .getHeaders()
             .add(X_ALL_MEDIA_HDR, X_ALL_MEDIA_HDR_VALUE);
