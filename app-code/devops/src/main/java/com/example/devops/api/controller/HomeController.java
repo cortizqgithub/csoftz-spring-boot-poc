@@ -32,6 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
+    private static final String MESSAGE_KEY = "message";
+    private static final String MESSAGE_VALUE = "Hello World";
+
     /**
      * Default entry point.
      * GET /
@@ -40,6 +43,6 @@ public class HomeController {
      */
     @GetMapping("/")
     public Map<String, Object> greeting() {
-        return Collections.singletonMap("message", "Hello World");
+        return Collections.singletonMap(MESSAGE_KEY, MESSAGE_VALUE);
     }
 }

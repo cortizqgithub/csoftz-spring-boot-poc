@@ -3,7 +3,7 @@
 /* Description:   Test REST Api for Home end-points.                          */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jan.27/2020                                                 */
+/* Last Modified: Jul.24/2020                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
@@ -40,14 +40,17 @@ import com.example.devops.api.controller.HomeController;
  * <a href="https://spring.io/guides/gs/testing-restdocs/#initial">Spring Rest Docs Guide</a>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.27/2020
+ * @version 1.1, Jul.24/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(HomeController.class)
-@AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
+@AutoConfigureRestDocs(uriScheme = "http", uriHost = "api.example.com")
 public class HomeControllerIntegrationTest {
     private static final String HOME_URL = "/";
+    private static final String ASCIIDOC_SNIPPET_HOME = "home";
+    private static final String ASCIIDOC_FIELD_DESC_MESSAGE = "message";
+    private static final String ASCIIDOC_FIELD_DESC_MESSAGE_VAL = "The welcome message for the user.";
 
     @Autowired
     private MockMvc mockMvc;
@@ -64,10 +67,10 @@ public class HomeControllerIntegrationTest {
         this.mockMvc.perform(get(HOME_URL).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Hello World")))
-            .andDo(document("home",
+            .andDo(document(ASCIIDOC_SNIPPET_HOME,
                 preprocessResponse(prettyPrint()),
                 responseFields(
-                    fieldWithPath("message").description("The welcome message for the user.")
+                    fieldWithPath(ASCIIDOC_FIELD_DESC_MESSAGE).description(ASCIIDOC_FIELD_DESC_MESSAGE_VAL)
                 )
             ));
     }

@@ -3,7 +3,7 @@
 /* Description:   Service implementation to handle Leap Year operations       */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Jan.28/2020                                                 */
-/* Last Modified: Jan.20/2020                                                 */
+/* Last Modified: Jul.24/2020                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -16,15 +16,18 @@ package com.example.devops.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.example.devops.service.intr.LeapYearService;
 
 /**
  * Service implementation to handle Leap Year operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.20/2020
+ * @version 1.1, Jul.24/2020
  * @since 11 (JDK), Jan.20/2020
  */
+@Service
 public class LeapYearServiceImpl implements LeapYearService {
 
     /**

@@ -4,7 +4,7 @@
 /*                (Tests)                                                     */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Jan.28/2020                                                 */
-/* Last Modified: Jul.05/2020                                                 */
+/* Last Modified: Jul.24/2020                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
@@ -14,6 +14,13 @@
  -----------------------------------------------------------------------------*/
 package com.example.devops.service;
 
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_1600;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_1700;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_1800;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_1900;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_2000;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_2019;
+import static com.example.devops.common.util.consts.CommonTestConstants.LEAP_YEAR_TEST_2020;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
@@ -28,18 +35,10 @@ import com.example.devops.service.intr.LeapYearService;
  * Service implementation to handle Leap Year operations (Tests).
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.05/2020
+ * @version 1.1, Jul.24/2020
  * @since 11 (JDK), Jan.28/2020
  */
 public class LeapYearServiceImplTest {
-    private static final int LEAP_YEAR_TEST_1600 = 1600;
-    private static final int LEAP_YEAR_TEST_1700 = 1700;
-    private static final int LEAP_YEAR_TEST_1800 = 1800;
-    private static final int LEAP_YEAR_TEST_1900 = 1900;
-    private static final int LEAP_YEAR_TEST_2000 = 2000;
-    private static final int LEAP_YEAR_TEST_2019 = 2019;
-    private static final int LEAP_YEAR_TEST_2020 = 2020;
-
     /**
      * Service to Test.
      */
@@ -60,8 +59,7 @@ public class LeapYearServiceImplTest {
      */
     @Test
     public void givenLeapYearThenReturnsCheckToTrue() {
-        Boolean isLeapYear = leapYearService.check(LEAP_YEAR_TEST_2020);
-        assertThat(isLeapYear)
+        assertThat(leapYearService.check(LEAP_YEAR_TEST_2020))
             .isNotNull()
             .isTrue();
     }
@@ -71,8 +69,7 @@ public class LeapYearServiceImplTest {
      */
     @Test
     public void givenNotLeapYearThenReturnsCheckToFalse() {
-        Boolean isLeapYear = leapYearService.check(LEAP_YEAR_TEST_2019);
-        assertThat(isLeapYear)
+        assertThat(leapYearService.check(LEAP_YEAR_TEST_2019))
             .isNotNull()
             .isFalse();
     }
@@ -93,7 +90,6 @@ public class LeapYearServiceImplTest {
         List<Boolean> expectedLeapYearList = Arrays.asList(true, false, false, false, false, true);
 
         List<Boolean> actualLeapYearList = leapYearService.check(yearList);
-        assertThat(actualLeapYearList)
-            .isEqualTo(expectedLeapYearList);
+        assertThat(actualLeapYearList).isEqualTo(expectedLeapYearList);
     }
 }

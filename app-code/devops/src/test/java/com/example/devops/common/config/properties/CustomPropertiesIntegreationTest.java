@@ -1,4 +1,17 @@
-package com.example.devops.config.properties;
+/*----------------------------------------------------------------------------*/
+/* Source File:   CUSTOMPROPERTIESINTEGREATIONTEST.JAVA                       */
+/* Description:   Creates the stub for application.properties (Tests).        */
+/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
+/* Date:          Mar.28/2020                                                 */
+/* Last Modified: Mar.28/2020                                                 */
+/* Version:       1.1                                                         */
+/* Copyright (c), 2020 CSoftZ                                                 */
+/*----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+ History
+ Mar.28/2020  COQ  File created.
+ -----------------------------------------------------------------------------*/
+package com.example.devops.common.config.properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -3,7 +3,7 @@
 /* Description:   REST Api for Message end-points.                            */
 /* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
 /* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jan.27/2020                                                 */
+/* Last Modified: Jul.24/2020                                                 */
 /* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
@@ -31,11 +31,11 @@ import com.example.devops.api.controller.MessageController;
  * Test REST Api for Message end-points.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.27/2020
+ * @version 1.1, Jul.24/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @RunWith(SpringRunner.class)
-@AutoConfigureRestDocs(outputDir = "target/snippets", uriScheme = "http", uriHost = "api.example.com")
+@AutoConfigureRestDocs(uriScheme = "http", uriHost = "api.example.com")
 @WebFluxTest(MessageController.class)
 public class MessageControllerIntegrationTest {
     private static final String MSG_SAY_URL = "/api/v1/msg/say";

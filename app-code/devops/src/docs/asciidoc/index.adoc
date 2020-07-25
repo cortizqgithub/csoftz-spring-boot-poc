@@ -18,7 +18,7 @@ include::{snippets}/home/request-body.adoc[]
 include::{snippets}/home/http-response.adoc[]
 
 .Response Body
-include::{snippets}/home/response.body.adoc[]
+include::{snippets}/home/response-body.adoc[]
 
 .Response Fields
 include::{snippets}/home/response-fields.adoc[]

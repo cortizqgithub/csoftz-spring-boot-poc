@@ -10,7 +10,6 @@ Jul.24/2020 V0.0.10-RELESE
 - Refactor packages.
 - Refactor code.
 
-
 Dec.17/2019 V0.0.9-RELEASE
 - Adds sonar properties to take care by maven plugin.
 

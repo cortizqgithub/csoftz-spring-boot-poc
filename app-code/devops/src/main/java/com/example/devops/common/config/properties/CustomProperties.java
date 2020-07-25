@@ -11,7 +11,7 @@
  History
  Mar.28/2020  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.example.devops.config.properties;
+package com.example.devops.common.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
