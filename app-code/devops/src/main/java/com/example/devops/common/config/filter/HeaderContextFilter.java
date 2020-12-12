@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   HEADERCONTEXTFILTER.JAVA                                    */
-/* Description:   Web Filter in Reactive stack.                               */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jan.23/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.2                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -29,7 +24,7 @@ import reactor.core.publisher.Mono;
  * <p>This filter adds all request headers to all the WebClient requests.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.2, Jul.24/2020
+ * @version 1.4, Dec.12/2020
  * @since 11 (JDK), Jan.23/2020
  */
 @Component

@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   COMMONTESTCONSTANTS.JAVA                                    */
-/* Description:   Common Unit Test constants shared among them.               */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jul.24/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -17,7 +12,7 @@ package com.example.devops.common.util.consts;
  * Common Unit Test constants shared among them.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.24/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Jul.24/2020
  */
 public class CommonTestConstants {

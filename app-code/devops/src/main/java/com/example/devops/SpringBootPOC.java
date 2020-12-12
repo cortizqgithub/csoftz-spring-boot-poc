@@ -1,11 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   SPRINGBOOTPOC.JAVA                                          */
-/* Description:   Entry point to the application.                             */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Mar.16/2019                                                 */
-/* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -20,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Entry point to the application.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.16/2019
+ * @version 1.1, Dec.12/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @SpringBootApplication

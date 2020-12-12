@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   LEAPYEARCONTROLLER.JAVA                                     */
-/* Description:   REST Api for LeapYear end-points.                           */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jul.24/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -34,7 +29,7 @@ import reactor.core.publisher.Mono;
  * <p><b>NOTE:</b>This controller uses Spring WebFlux, this means it is reactive.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.24/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Jul.24/2020
  */
 @RestController

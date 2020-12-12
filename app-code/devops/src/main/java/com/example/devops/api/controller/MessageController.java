@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   MESSAGECONTROLLER.JAVA                                      */
-/* Description:   REST Api for Message end-points.                            */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.2                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -28,7 +23,7 @@ import reactor.core.publisher.Mono;
  * <p><b>NOTE:</b>This controller uses Spring WebFlux, this means it is reactive.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.2, Jul.24/2020
+ * @version 1.3, Dec.12/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @RestController

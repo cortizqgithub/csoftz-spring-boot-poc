@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   ADDTIMESTAMPWEBFILTER.JAVA                                  */
-/* Description:   Web Filter in Reactive stack.                               */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jan.23/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.2                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -32,7 +27,7 @@ import reactor.core.publisher.Mono;
  * <p>Adds a TimeStamp header to all responses.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.2, Jul.24/2020
+ * @version 1.3, Dec.12/2020
  * @since 11 (JDK), Jan.23/2020
  */
 @Component

@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CUSTOMPROPERTIES.JAVA                                       */
-/* Description:   Creates the stub for application.properties                 */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.28/2020                                                 */
-/* Last Modified: Mar.28/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -31,7 +26,7 @@ import lombok.Setter;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Mar.28/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Mar.28/2020
  */
 

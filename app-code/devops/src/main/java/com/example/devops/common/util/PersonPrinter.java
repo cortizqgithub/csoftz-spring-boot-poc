@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   PERSONPRINTERTEST.JAVA                                      */
-/* Description:   Util for Person tasks.                                      */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jan.17/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -15,16 +10,16 @@ package com.example.devops.common.util;
 
 import com.example.devops.domain.Person;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Util for Person tasks.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.17/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Mar.01/2019
  */
-@Log4j2
+@Slf4j
 public class PersonPrinter {
     private final Person person;
 

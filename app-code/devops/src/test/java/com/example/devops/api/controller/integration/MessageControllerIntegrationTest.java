@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   MESSAGECONTROLLERINTEGRATIONTEST.JAVA                       */
-/* Description:   REST Api for Message end-points.                            */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -17,12 +12,12 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.example.devops.api.controller.MessageController;
@@ -31,13 +26,13 @@ import com.example.devops.api.controller.MessageController;
  * Test REST Api for Message end-points.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.24/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Mar.01/2019
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @AutoConfigureRestDocs(uriScheme = "http", uriHost = "api.example.com")
 @WebFluxTest(MessageController.class)
-public class MessageControllerIntegrationTest {
+class MessageControllerIntegrationTest {
     private static final String MSG_SAY_URL = "/api/v1/msg/say";
 
     @Autowired
@@ -48,7 +43,7 @@ public class MessageControllerIntegrationTest {
      * Spring WebFlux testing capabilities.
      */
     @Test
-    public void shouldReturnMessage() {
+    void shouldReturnMessage() {
         this.webTestClient.get()
             .uri(MSG_SAY_URL)
             .exchange()

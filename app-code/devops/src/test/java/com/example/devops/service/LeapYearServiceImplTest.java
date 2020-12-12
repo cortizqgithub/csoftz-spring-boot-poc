@@ -1,11 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   LEAPYEARSERVICEIMPL.JAVA                                    */
-/* Description:   Service implementation to handle Leap Year operations       */
-/*                (Tests)                                                     */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jan.28/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -26,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.example.devops.service.intr.LeapYearService;
 
@@ -35,10 +29,10 @@ import com.example.devops.service.intr.LeapYearService;
  * Service implementation to handle Leap Year operations (Tests).
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.24/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Jan.28/2020
  */
-public class LeapYearServiceImplTest {
+class LeapYearServiceImplTest {
     /**
      * Service to Test.
      */
@@ -49,7 +43,7 @@ public class LeapYearServiceImplTest {
      *
      * @throws Exception When an error is raised.
      */
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         leapYearService = new LeapYearServiceImpl();
     }
@@ -58,7 +52,7 @@ public class LeapYearServiceImplTest {
      * When a Leap Year is supplied then it checks it is indeed so.
      */
     @Test
-    public void givenLeapYearThenReturnsCheckToTrue() {
+    void givenLeapYearThenReturnsCheckToTrue() {
         assertThat(leapYearService.check(LEAP_YEAR_TEST_2020))
             .isNotNull()
             .isTrue();
@@ -68,7 +62,7 @@ public class LeapYearServiceImplTest {
      * When a non-Leap Year is supplied it checks that it is not.
      */
     @Test
-    public void givenNotLeapYearThenReturnsCheckToFalse() {
+    void givenNotLeapYearThenReturnsCheckToFalse() {
         assertThat(leapYearService.check(LEAP_YEAR_TEST_2019))
             .isNotNull()
             .isFalse();
@@ -78,7 +72,7 @@ public class LeapYearServiceImplTest {
      * When a list of years is supplied, it validates each one to tell if it is a Leap year or not.
      */
     @Test
-    public void givenAListOfYearsThenReturnsAListOfChecksToEachOne() {
+    void givenAListOfYearsThenReturnsAListOfChecksToEachOne() {
         List<Integer> yearList =
             Arrays.asList(LEAP_YEAR_TEST_2000,
                 LEAP_YEAR_TEST_2019,

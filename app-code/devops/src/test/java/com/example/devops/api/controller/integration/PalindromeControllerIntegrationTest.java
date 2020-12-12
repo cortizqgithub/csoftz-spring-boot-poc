@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   PALINDROMECONTROLLERINTEGRATIONCONTROLLER.JAVA              */
-/* Description:   REST Api for Palindrome end-points (Tests).                 */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.16/2019                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.3                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -23,14 +18,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
@@ -41,14 +36,14 @@ import org.springframework.test.web.servlet.MockMvc;
  * This is an integration test as it loads the whole context to test the web layer.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Jul.24/2020
+ * @version 1.4, Dec.12/2020
  * @since 11 (JDK), Mar.16/2019
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs(uriScheme = "http", uriHost = "api.example.com")
-public class PalindromeControllerIntegrationTest {
+class PalindromeControllerIntegrationTest {
     private static final String PALINDROME_URL = "/api/v1/palindrome/check";
     private static final String URI_PARAM_PALINDROME_TEXT = "Text of palindrome to check";
 
@@ -61,7 +56,7 @@ public class PalindromeControllerIntegrationTest {
      * @throws Exception Throws any failure in code execution.
      */
     @Test
-    public void givenPalindromeControllerWhenSettingAPalindromeTextReturnsTrue() throws Exception {
+    void givenPalindromeControllerWhenSettingAPalindromeTextReturnsTrue() throws Exception {
         String PALINDROME_FULL_URL = PALINDROME_URL + "?t=A nut for a jar of tuna";
         mockMvc.perform(get(PALINDROME_FULL_URL))
             .andExpect(status().isOk())
@@ -82,7 +77,7 @@ public class PalindromeControllerIntegrationTest {
      * @throws Exception Throws any failure in code execution.
      */
     @Test
-    public void givenPalindromeControllerWhenSettingANonPalindromeTextReturnsTrue() throws Exception {
+    void givenPalindromeControllerWhenSettingANonPalindromeTextReturnsTrue() throws Exception {
         String URI = PALINDROME_URL + "?t=Car";
         mockMvc.perform(get(URI))
             .andExpect(status().isOk())

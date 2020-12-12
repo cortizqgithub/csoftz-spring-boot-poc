@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   PALINDROMECONTROLLER.JAVA                                   */
-/* Description:   REST Api for Palindrome end-points.                         */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.16/2019                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.4                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -31,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.4, Jul.24/2020
+ * @version 1.5, Dec.12/2020
  * @since 11 (JDK), Mar.16/2019
  */
 @Slf4j

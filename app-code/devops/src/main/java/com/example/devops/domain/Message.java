@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   MESSAGE.JAVA                                                */
-/* Description:   Domain object to represent a Message.                       */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.01/2019                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.2                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -26,7 +21,7 @@ import lombok.Value;
  * <p>To achieve immutability we use Lombok <a href="https://projectlombok.org/features/Value">@Value</a> annotation.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.2, Jul.24/2020
+ * @version 1.3, Dec.12/2020
  * @since 11 (JDK), Mar.01/2019
  */
 @Value

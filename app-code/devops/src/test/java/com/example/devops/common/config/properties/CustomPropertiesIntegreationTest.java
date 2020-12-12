@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CUSTOMPROPERTIESINTEGREATIONTEST.JAVA                       */
-/* Description:   Creates the stub for application.properties (Tests).        */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.28/2020                                                 */
-/* Last Modified: Mar.28/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -15,17 +10,24 @@ package com.example.devops.common.config.properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
+/**
+ * Custom Properties Integration Tests.
+ *
+ * @author Carlos Adolfo Ortiz Quirós (COQ)
+ * @version 1.1, Dec.12/2020
+ * @since 11 (JDK), Mar.16/2019
+ */
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @TestPropertySource("classpath:customproperties.properties")
-public class CustomPropertiesIntegreationTest {
+class CustomPropertiesIntegreationTest {
 
     private static final String HTTP_LOCALHOST = "http://localhost";
     private static final int TIME_OUT_MILLISECONDS = 2000;
@@ -37,7 +39,7 @@ public class CustomPropertiesIntegreationTest {
      * Validates that the file properties contains valid settings.
      */
     @Test
-    public void whenUrlPropertyQueriedThenReturnsPropertyValue() {
+    void whenUrlPropertyQueriedThenReturnsPropertyValue() {
         assertThat(customProperties).isNotNull();
         assertThat(customProperties.getUrl()).isEqualTo(HTTP_LOCALHOST);
         assertThat(customProperties.getTimeoutInMilliSeconds()).isEqualTo(TIME_OUT_MILLISECONDS);

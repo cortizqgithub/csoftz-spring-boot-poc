@@ -1,12 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   PALINDROMESERVICEIMPLTEST.JAVA                              */
-/* Description:   Service implementation to handle Palindrome operations      */
-/*                (Tests).                                                    */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.16/2019                                                 */
-/* Last Modified: Oct.15/2019                                                 */
-/* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -16,8 +10,8 @@ package com.example.devops.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import com.example.devops.service.intr.PalindromeService;
 
@@ -25,10 +19,10 @@ import com.example.devops.service.intr.PalindromeService;
  * Service implementation to handle Palindrome operations (Tests).
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.15/2019
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Mar.16/2019
  */
-public class PalindromeServiceImplTest {
+class PalindromeServiceImplTest {
     /*
      * Service to test.
      */
@@ -37,7 +31,7 @@ public class PalindromeServiceImplTest {
     /**
      * Prepare helpers.
      */
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         palindromeService = new PalindromeServiceImpl();
     }
@@ -46,30 +40,27 @@ public class PalindromeServiceImplTest {
      * Checks if the Empty String is a Palindrome.
      */
     @Test
-    public void givenPalindromeWhenInfoIsEmptyThenReturnsTrue() {
+    void givenPalindromeWhenInfoIsEmptyThenReturnsTrue() {
         String info = "";
 
-        Boolean isPalindrome = palindromeService.check(info);
-        assertThat(isPalindrome).isTrue();
+        assertThat(palindromeService.check(info)).isTrue();
     }
 
     /**
      * Checks if non empty text that is known as a Palindrome text is checked as TRUE.
      */
     @Test
-    public void givenPalindromeWhenPuttingAPalindromeTextThenReturnsTrue() {
+    void givenPalindromeWhenPuttingAPalindromeTextThenReturnsTrue() {
         String info = "A nut for a jar of tuna";
 
-        Boolean isPalindrome = palindromeService.check(info);
-        assertThat(isPalindrome).isTrue();
+        assertThat(palindromeService.check(info)).isTrue();
     }
 
     /**
      * Given a null string, it returns false.
      */
     @Test
-    public void givenPalindromeWhenPuttingANullStringThenReturnsFalse() {
-        Boolean isPalindrome = palindromeService.check(null);
-        assertThat(isPalindrome).isFalse();
+    void givenPalindromeWhenPuttingANullStringThenReturnsFalse() {
+        assertThat(palindromeService.check(null)).isFalse();
     }
 }
