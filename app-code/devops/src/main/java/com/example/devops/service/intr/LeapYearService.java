@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   LEAPYEARSERVICE.JAVA                                        */
-/* Description:   Service interface to handle Leap Year operations            */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jan.28/2020                                                 */
-/* Last Modified: Jan.28/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -19,7 +14,7 @@ import java.util.List;
  * Service interface to handle Leap Year operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jan.28/2020
+ * @version 1.1, Dec.12/2020
  * @since 11 (JDK), Jan.28/2020
  */
 public interface LeapYearService {

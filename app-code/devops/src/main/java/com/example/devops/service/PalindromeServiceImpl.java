@@ -1,11 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   PALINDROMESERVICEIMPL.JAVA                                  */
-/* Description:   Service implementation to handle Palindrome operations.     */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Mar.16/2019                                                 */
-/* Last Modified: Jul.05/2020                                                 */
-/* Version:       1.3                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -23,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * Service implementation to handle Palindrome operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.3, Jul.05/2020
+ * @version 1.4, Dec.12/2020
  * @since 11 (JDK), Mar.19/2019
  */
 @Slf4j

@@ -23,6 +23,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>15</java.version>
         <jacoco.version>0.8.6</jacoco.version>
+        <pmd.version>3.14.0</pmd.version>
+        <spotbugs.version>4.1.4</spotbugs.version>
+        <findsecbugs.version>1.11.0</findsecbugs.version>
         <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
 
         <!-- Sonar properties -->
@@ -123,7 +126,7 @@
                             <backend>html</backend>
                             <doctype>book</doctype>
                             <attributes>
-                                <snippets>${project.build.directory}/snippets</snippets>
+                                <snippets>${project.build.directory}/generated-snippets</snippets>
                             </attributes>
                         </configuration>
                     </execution>
@@ -199,6 +202,50 @@
                         <configuration>
                             <dataFile>${project.build.directory}/jacoco.exec</dataFile>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- PMD -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <executions>
+                    <execution>
+                        <id>pmd-scan</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- SpotBugs -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>true</failOnError>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>${findsecbugs.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>scan</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

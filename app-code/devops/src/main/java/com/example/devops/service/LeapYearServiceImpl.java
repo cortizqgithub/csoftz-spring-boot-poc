@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   LEAPYEARSERVICEIMPL.JAVA                                    */
-/* Description:   Service implementation to handle Leap Year operations       */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Jan.28/2020                                                 */
-/* Last Modified: Jul.24/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2020 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -24,7 +19,7 @@ import com.example.devops.service.intr.LeapYearService;
  * Service implementation to handle Leap Year operations.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.24/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Jan.20/2020
  */
 @Service
@@ -41,7 +36,10 @@ public class LeapYearServiceImpl implements LeapYearService {
      */
     @Override
     public Boolean check(Integer year) {
-        return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+        if (year % 4 == 0 && year % 100 != 0) {
+            return true;
+        }
+        return year % 400 == 0;
     }
 
     /**
