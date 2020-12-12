@@ -1,7 +1,16 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Jul.24/2020
+Modified: Dec.12/2020
+
+Dec.12/2020 V2020.1.0
+- Change naming convention for release. Only uses yyyy.n.x format. The tag is also named without the release date, 
+  this could be infered from git commit when tag is created.
+- Upgraded to Spring Boot 2.4.1, JDK 15, Lombok 1.8.16 and JaCoCo 0.8.6
+- Moves from Junit 4 to Junit 5, complete overhaul.
+- Change the header info for each source java file.
+- Fix generated docs snippets directory.
+- Add PMD, SpotBugs.
 
 Jul.24/2020 V0.0.10-RELESE
 - Add immutable definition for domain objects (NOTE: Build with builder, pending supression of constructor

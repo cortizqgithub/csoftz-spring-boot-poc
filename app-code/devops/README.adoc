@@ -1,6 +1,6 @@
 = CSoftZ Spring Boot POC (devops) README
 
-V0.0.10-RELEASE - 20200724
+V2020.1.0
 
 This is a project that includes many technologies as a way of learning.
 When Scope is changed, maybe another project is open to address other requirements.
@@ -9,10 +9,10 @@ This is a general purpose project as a learning aid for different configurations
 
 The following is the list of components used.
 
-* *JaCoCo Plugin* V0.8.5
-* *Lombok* V1.18.10 (curated from Spring Boot Starters).
-* *Spring Boot* V2.3.1 with the following modules: Spring WebFlux, Actuator, DevTools.
-* *Spring RestDocs* V2.0.4, requires _Spring Framework_ 5.0.2 or later.
+* *JaCoCo Plugin* V0.8.6
+* *Lombok* V1.18.16 (curated from Spring Boot Starters).
+* *Spring Boot* V2.4.1 with the following modules: Spring WebFlux, Actuator, DevTools, Configuration Processor.
+* *Spring RestDocs* V2.0.5, requires _Spring Framework_ 5.0.2 or later.
 
 For testing purposes
 
@@ -22,4 +22,21 @@ For testing purposes
 * *Mockito*
 * *Spring Rest MockMvc*
 * *Spring Rest WebClient Test*
+
+Since version 2020.1.0 the project uses JUnit 5 exclusively.
+
+Migrating from JUnit 4 to JUnit 5
+https://www.baeldung.com/junit-5-migration
+
+Five Tools to Improve Your Java Code
+https://developer.okta.com/blog/2019/12/20/five-tools-improve-java
+
+Sometimes it is needed to skip both *PMD* and *SpotBugs*, use the following command.
+
+[NOTE]
+====
+You can skip PMD using the command line arg
+ #-Dpmd.skip#, similarly with SpotBugs, #-Dspotbugs.skip#. For example: mvn verify -Dpmd.skip -Dspotbugs.skip would skip both.
+
+====
 
