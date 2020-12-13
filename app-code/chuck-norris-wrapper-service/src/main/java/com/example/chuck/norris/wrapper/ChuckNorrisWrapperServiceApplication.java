@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CHUCKNORRISWRAPPERSERVICEAPPLICATION.JAVA                   */
-/* Description:   Entry point to the application.                             */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.11/2019                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -20,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Entry point to the application.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.11/2019
+ * @version 1.1, Dec.12/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @SpringBootApplication

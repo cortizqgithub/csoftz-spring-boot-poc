@@ -1,11 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CHUCKNORRISDATA.JAVA                                        */
-/* Description:   Domain model to map information from Chuck Norris Apiv      */
-/*                endpoint.                                                   */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.11/2019                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -22,7 +16,7 @@ import lombok.Data;
  * Domain model to map information from Chuck Norris Api endpoint.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.11/2019
+ * @version 1.1, Dec.12/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @Data

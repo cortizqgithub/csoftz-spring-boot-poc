@@ -1,10 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CHUCKNORRISCONTROLLER.JAVA                                  */
-/* Description:   REST Api for ChuckNorris end-point.                         */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.11/2019                                                 */
-/* Last Modified: Jul.05/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -38,7 +33,7 @@ import reactor.core.publisher.Mono;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.05/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Oct.11/2019
  */
 @RestController
@@ -64,7 +59,6 @@ public class ChuckNorrisController {
      */
     @GetMapping(value = "/random/string", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<String> retrieveRandomJokeWithString() {
-        log.info("retrieveRandomJokeWithString");
         return jokesService.retrievePlainRandomJoke();
     }
 
@@ -76,7 +70,6 @@ public class ChuckNorrisController {
      */
     @GetMapping("/random/chuck-norris-data")
     public Mono<ChuckNorrisData> retrieveRandomJokeWithChuckNorrisData() {
-        log.info("retrieveRandomJokeWithChuckNorrisData");
         return jokesService.retrieveRandomJoke();
     }
 
@@ -88,7 +81,6 @@ public class ChuckNorrisController {
      */
     @GetMapping(value = "/random/three/string", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<String> retrieveThreeRandomJokesWithString() {
-        log.info("retrieveThreeRandomJokesWithString");
         return Flux
             .concat(jokesService.retrievePlainRandomJoke())
             .concatWith(jokesService.retrievePlainRandomJoke())
@@ -103,7 +95,6 @@ public class ChuckNorrisController {
      */
     @GetMapping("/random/three/chuck-norris-data")
     public Flux<ChuckNorrisData> retrieveFourRandomJokesWithChuckNorrisData() {
-        log.info("retrieveFourRandomJokesWithChuckNorrisData");
         return Flux.merge(jokesService.retrieveRandomJoke())
             .mergeWith(jokesService.retrieveRandomJoke())
             .mergeWith(jokesService.retrieveRandomJoke());
@@ -118,7 +109,6 @@ public class ChuckNorrisController {
      */
     @GetMapping("/random/{times}/chuck-norris-data")
     public Flux<ChuckNorrisData> retrieveTimesRandomJokesWithChuckNorrisData(@PathVariable int times) {
-        log.info("retrieveRandomJokeWithString");
         List<Mono<ChuckNorrisData>> publishers = new ArrayList<>();
 
         for (int i = 0; i < times; i++) {
@@ -137,12 +127,10 @@ public class ChuckNorrisController {
     public Mono<ChuckNorrisDataWrapper> retrieveChuckNorrisDataWrap() {
         // https://www.baeldung.com/java-uuid
         return jokesService.retrieveRandomJoke()
-            .map(s -> {
-                return ChuckNorrisDataWrapper.builder()
-                    .wrapId(UUID.randomUUID().toString())
-                    .chuckNorrisData(s)
-                    .build();
-            });
+            .map(s -> ChuckNorrisDataWrapper.builder()
+                .wrapId(UUID.randomUUID().toString())
+                .chuckNorrisData(s)
+                .build());
     }
 
     /**
@@ -153,18 +141,15 @@ public class ChuckNorrisController {
      */
     @GetMapping("/random/{times}/chuck-norris-data/wrapped")
     public Flux<ChuckNorrisDataWrapper> retrieveTimesRandomJokesWithChuckNorrisDataWrapper(@PathVariable int times) {
-        log.info("retrieveRandomJokeWithString");
         List<Mono<ChuckNorrisData>> publishers = new ArrayList<>();
 
         for (int i = 0; i < times; i++) {
             publishers.add(jokesService.retrieveRandomJoke());
         }
         return Flux.merge(publishers)
-            .map(s -> {
-                return ChuckNorrisDataWrapper.builder()
-                    .wrapId(UUID.randomUUID().toString())
-                    .chuckNorrisData(s)
-                    .build();
-            });
+            .map(s -> ChuckNorrisDataWrapper.builder()
+                .wrapId(UUID.randomUUID().toString())
+                .chuckNorrisData(s)
+                .build());
     }
 }

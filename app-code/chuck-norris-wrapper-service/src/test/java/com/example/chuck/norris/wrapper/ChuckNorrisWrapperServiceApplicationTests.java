@@ -1,11 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CHUCKNORRISWRAPPERSERVICEAPPLICATIONTESTS.JAVA              */
-/* Description:   Spring Boot Context test.                                   */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.11/2019                                                 */
-/* Last Modified: Jul.05/2020                                                 */
-/* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -15,23 +10,23 @@ package com.example.chuck.norris.wrapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * Spring Boot Context test.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.05/2020
+ * @version 1.2, Dec.12/2020
  * @since 11 (JDK), Oct.11/2019
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class ChuckNorrisWrapperServiceApplicationTests {
+class ChuckNorrisWrapperServiceApplicationTests {
     @Autowired
     private ApplicationContext appContext;
 
@@ -39,7 +34,7 @@ public class ChuckNorrisWrapperServiceApplicationTests {
      * Load Spring Boot App to validate it is well configured.
      */
     @Test
-    public void contextLoads() {
+    void contextLoads() {
         assertThat(appContext).isNotNull();
     }
 

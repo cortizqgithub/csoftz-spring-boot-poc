@@ -1,11 +1,5 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   JOKESSERVICE.JAVA                                           */
-/* Description:   Connects to https://api.chucknorris.io for jokes about      */
-/*                Chuck Norris.                                               */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.21/2019                                                 */
-/* Last Modified: Jul.05/2020                                                 */
-/* Version:       1.1                                                         */
 /* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -24,7 +18,7 @@ import reactor.core.publisher.Mono;
  * </p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Jul.05/2020
+ * @version 1.1, Dec.12/2020
  * @since 11 (JDK), Oct.11/2019
  */
 public interface JokesService {

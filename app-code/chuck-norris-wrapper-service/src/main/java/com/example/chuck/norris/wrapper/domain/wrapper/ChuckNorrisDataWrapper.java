@@ -1,12 +1,6 @@
 /*----------------------------------------------------------------------------*/
 /* Source File:   CHUCKNORRISDATAWRAPPER.JAVA                                 */
-/* Description:   Domain model to map information from Chuck Norris Apiv      */
-/*                endpoint.                                                   */
-/* Author:        Carlos Adolfo Ortiz Quirós (COQ)                            */
-/* Date:          Oct.11/2019                                                 */
-/* Last Modified: Oct.11/2019                                                 */
-/* Version:       1.1                                                         */
-/* Copyright (c), 2019 CSoftZ                                                 */
+/* Copyright (c), 2019, 2020 CSoftZ                                           */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
@@ -25,7 +19,7 @@ import lombok.Data;
  * Here we add a UUID id.
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.1, Oct.11/2019
+ * @version 1.1, Dec.12/2020
  * @see <a href="https://www.baeldung.com/java-uuid">Guide to UUID in Java!</a>}
  * @since 11 (JDK), Oct.11/2019
  */
