@@ -1,0 +1,16 @@
+{
+  "cpu": 1500,
+  "memory": 3000,
+  "bag": "yuapps",
+  "image_url": "image_url",
+  "environment": [
+    {
+      "name": "carlos",
+      "value": "ortiz"
+    },
+    {
+      "name": "next",
+      "value": "one"
+    }
+  ]
+}
