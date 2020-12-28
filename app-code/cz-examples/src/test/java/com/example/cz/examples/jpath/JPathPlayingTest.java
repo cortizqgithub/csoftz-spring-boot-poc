@@ -68,8 +68,6 @@ class JPathPlayingTest {
     private static final String BOOK_TITLE_SWORD_OF_HONOUR = "Sword of Honour";
     private static final String BOOK_TITLE_LOOKING_WITH_THE_SWORD_OF_HONOUR = "Looking with the Sword of Honour";
     private static final String BOOK_TITLE_THE_LORD_OF_THE_RINGS = "The Lord of the Rings";
-
-    private static DocumentContext jsonContext;
     private static final String bookStore =
         """
                 {
@@ -116,6 +114,7 @@ class JPathPlayingTest {
                   "expensive": 10
                 }
             """;
+    private static DocumentContext jsonContext;
 
     @BeforeAll
     public static void init() {
