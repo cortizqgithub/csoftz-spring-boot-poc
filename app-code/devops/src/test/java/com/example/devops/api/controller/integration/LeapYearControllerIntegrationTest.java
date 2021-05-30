@@ -47,7 +47,7 @@ import com.example.devops.service.intr.LeapYearService;
  * <p><b>NOTE:</b>This controller uses Spring WebFlux, this means it is reactive.</p>
  *
  * @author Carlos Adolfo Ortiz Quirós (COQ)
- * @version 1.2, Dec.12/2020
+ * @version 1.3, May.29/2021
  * @since 11 (JDK), Jul.24/2020
  */
 @ExtendWith(SpringExtension.class)
@@ -67,7 +67,7 @@ class LeapYearControllerIntegrationTest {
     private LeapYearService leapYearService;
 
     /**
-     * As MessageController is a WebFlux (it has Mono and Flux return types) it means that this test must use
+     * As LeapYearController is a WebFlux (it has Mono and Flux return types) it means that this test must use
      * Spring WebFlux testing capabilities.
      */
     @Test

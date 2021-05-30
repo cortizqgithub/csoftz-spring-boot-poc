@@ -1,6 +1,6 @@
 = CSoftZ Spring Boot POC (devops) README
 
-V2020.1.0
+V2021.1.0
 
 This is a project that includes many technologies as a way of learning.
 When Scope is changed, maybe another project is open to address other requirements.

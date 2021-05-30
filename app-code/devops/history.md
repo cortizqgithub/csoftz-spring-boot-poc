@@ -3,6 +3,9 @@ Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
 Modified: Dec.12/2020
 
+May.29/2021 V2021.1.0
+- Change text in a javadoc.
+
 Dec.12/2020 V2020.1.0
 - Change naming convention for release. Only uses yyyy.n.x format. The tag is also named without the release date, 
   this could be infered from git commit when tag is created.
