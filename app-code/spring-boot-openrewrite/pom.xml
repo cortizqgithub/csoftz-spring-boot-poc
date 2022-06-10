@@ -20,6 +20,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -66,10 +76,15 @@
                 <configuration>
                     <activeRecipes>
                         <recipe>org.openrewrite.java.format.AutoFormat</recipe>
+                        <recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
+                        <recipe>org.openrewrite.java.OrderImports</recipe><!-- Is there a way to configure the IntelliJ settings for formattting -->
                         <recipe>org.openrewrite.java.logging.slf4j.ParameterizedLogging</recipe>
-                        <!--<recipe>org.openrewrite.java.spring.framework.UseObjectUtilsIsEmpty</recipe>-->
-                        <!--<recipe>org.openrewrite.java.spring.boot2.SpringBoot2JUnit4to5Migration</recipe>-->
-                        <!--<recipe>org.openrewrite.java.spring.boot2.SpringBoot2BestPractices</recipe>-->
+                        <recipe>org.openrewrite.java.RemoveObjectsIsNull</recipe>
+                        <recipe>org.openrewrite.java.cleanup.Cleanup</recipe>
+                        <recipe>org.openrewrite.java.spring.BeanMethodsNotPublic</recipe>
+                        <recipe>org.openrewrite.java.spring.framework.UseObjectUtilsIsEmpty</recipe>
+                        <recipe>org.openrewrite.java.spring.boot2.SpringBoot2JUnit4to5Migration</recipe>
+                        <recipe>org.openrewrite.java.spring.boot2.SpringBoot2BestPractices</recipe>
                     </activeRecipes>
                 </configuration>
                 <dependencies>
@@ -84,17 +99,6 @@
                         <version>4.22.1</version>
                     </dependency>
                 </dependencies>
-
-
-                <!--
-                <dependencies>
-                    <dependency>
-                        <groupId>org.openrewrite.recipe</groupId>
-                        <artifactId>rewrite-spring</artifactId>
-                        <version>4.22.0</version>
-                    </dependency>
-                </dependencies>
-                -->
             </plugin>
         </plugins>
     </build>
