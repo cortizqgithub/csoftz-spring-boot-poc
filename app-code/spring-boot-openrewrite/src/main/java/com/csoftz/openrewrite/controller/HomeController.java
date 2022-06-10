@@ -8,10 +8,10 @@
  -----------------------------------------------------------------------------*/
 package com.csoftz.openrewrite.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class HomeController {
@@ -29,7 +29,7 @@ public class HomeController {
                             int times,
                             String third) {
         return first
-                + times
-                + third;
+            + times
+            + third;
     }
 }
