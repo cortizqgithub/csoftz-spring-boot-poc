@@ -1,0 +1,22 @@
+server:
+  port: 8601
+  servlet:
+    context-path: /webmvc
+
+# Spring
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+          #loggerLevel: full
+
+logging:
+  level:
+    org.springframework: INFO
+    com.csoftz.spring.cloud.resilience4j.webmvc.service.client: DEBUG

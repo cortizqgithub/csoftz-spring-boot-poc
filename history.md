@@ -1,7 +1,14 @@
 File:     history.md
 Author:   Carlos Adolfo Ortiz Q
 Date:     Mar.04/2019
-Modified: Dec.12/2020
+Modified: Jun.09/2022
+
+Jun.08/2022 V2022.1.0 Tag: V2022.1.0
+- Add new demo applications
+  - spring-boot-poc
+  - spring-cloud-resilience4j-webflux
+  - spring-cloud-resilience4j-webmvc
+  - webflux-customer-svc
 
 Dec.12/2020 V2020.1.0 Tag: V2020.1.0
 - Change naming convention for release. Only uses yyyy.n.x format. The tag is also named without the release date, 

@@ -1,0 +1,13 @@
+server:
+  port: 8602
+  servlet:
+    context-path: /webflux
+
+logging:
+  level:
+    org.springframework: DEBUG
+
+# Spring
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
