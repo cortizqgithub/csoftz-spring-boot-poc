@@ -1,12 +1,12 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CUSTOMSERVICEHTTPCLIENT.JAVA                                */
+/* Source File:   CustomerServiceHttpClient.JAVA                              */
 /* Copyright (c), 2022 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
  History
  Jun.09/2022  COQ  File created.
  -----------------------------------------------------------------------------*/
-package com.csoftz.spring.boot.poc.service.client;
+package com.csoftz.spring.boot.poc.service.http.client;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,17 +22,17 @@ import reactor.core.publisher.Mono;
 
 public interface CustomerServiceHttpClient {
     @PostExchange("/api/v1/customers/")
-    public Mono<Customer> createCustomer(@RequestBody Customer customer);
+    Mono<Customer> createCustomer(@RequestBody Customer customer);
 
     @GetExchange("/api/v1/customers/")
-    public Flux<Customer> retrieveCustomers();
+    Flux<Customer> retrieveCustomers();
 
     @GetExchange("/api/v1/customers/{customerId}")
-    public Mono<Customer> retrieveCustomer(@PathVariable String customerId);
+    Mono<Customer> retrieveCustomer(@PathVariable String customerId);
 
     @PutExchange("/api/v1/customers/{customerId}")
-    public Mono<Customer> updateCustomer(@PathVariable String customerId, @RequestBody Customer customer);
+    Mono<Customer> updateCustomer(@PathVariable String customerId, @RequestBody Customer customer);
 
     @DeleteExchange("/api/v1/customers/{customerId}")
-    public Mono<Void> deleteCustomer(@PathVariable String customerId);
+    Mono<Void> deleteCustomer(@PathVariable String customerId);
 }

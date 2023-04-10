@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Source File:   CUSTOMCONTROLLER.JAVA                                       */
+/* Source File:   CustomController.java                                       */
 /* Copyright (c), 2022 CSoftZ                                                 */
 /*----------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------
@@ -18,19 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csoftz.spring.boot.poc.domain.Customer;
-import com.csoftz.spring.boot.poc.service.client.CustomerServiceHttpClient;
+import com.csoftz.spring.boot.poc.service.http.client.CustomerServiceHttpClient;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@Slf4j()
-@RequiredArgsConstructor
+@Slf4j
 @RequestMapping("api/v1/client/customers")
-public class CustomerController {
-    private final CustomerServiceHttpClient customerServiceHttpClient;
+public record CustomerController(CustomerServiceHttpClient customerServiceHttpClient) {
 
     @PostMapping()
     public Mono<Customer> createCustomer(@RequestBody Customer customer) {
