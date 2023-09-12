@@ -1,0 +1,14 @@
+[
+  {
+    "reviewId": "64400b17159bfe71672fb1ac",
+    "movieInfoId": 1,
+    "comment": "I'll never forget it",
+    "rating": 9.5
+  },
+  {
+    "reviewId": "64400edeb9eacf66f99c0e9c",
+    "movieInfoId": 1,
+    "comment": "Awesome Movie1",
+    "rating": 9.0
+  }
+]
