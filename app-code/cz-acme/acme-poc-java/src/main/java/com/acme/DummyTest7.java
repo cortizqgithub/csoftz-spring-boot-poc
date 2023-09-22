@@ -7,6 +7,7 @@
 package com.acme;
 
 import java.util.List;
+import org.apache.commons.collections4.CollectionUtils;
 
 public class DummyTest7 {
     public static void main(String[] args) {
@@ -24,7 +25,10 @@ public class DummyTest7 {
 
         System.out.println(" THis b2 " + b2);
 
-
+        System.out.println("=========");
+        System.out.println(CollectionUtils.isEmpty(list));
+        System.out.println(CollectionUtils.isEmpty(null));
+        System.out.println(CollectionUtils.isEmpty(List.of()));
     }
 
     private static boolean hasMatchingSubstring(String str, List<String> substrings) {
