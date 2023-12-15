@@ -16,18 +16,23 @@ public class DummyTest8 {
         var s3 = " 012354 ";
 
         var s4 = WordUtils.capitalize(s);
-        System.out.println("s4["+s4+"]");
+        System.out.println("s4[" + s4 + "]");
         String capitalize = StringUtils.capitalize(s);
-        System.out.println("["+capitalize.trim()+"]");
+        System.out.println("[" + capitalize.trim() + "]");
         String upperCase = s1.toUpperCase();
-        System.out.println("["+upperCase.trim()+"]");
+        System.out.println("[" + upperCase.trim() + "]");
         String s31 = s3;
-        System.out.println("["+s31.trim()+"]");
+        System.out.println("[" + s31.trim() + "]");
 
 
         var capitalizeWords = WordUtils.capitalize(s.trim().toLowerCase());
         System.out.println(capitalizeWords);
         System.out.println("s [" + s + "]");
+
+        Boolean a = null;
+        boolean b = a;
+        System.out.println("a=[" + a + "]");
+        System.out.println("b=[" + b + "]");
     }
 
 }
