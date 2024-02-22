@@ -4,18 +4,18 @@
  *
  * (c) Walt Disney.  All rights reserved.
  */
-package com.acme;
+package com.tips;
 
-import java.util.Optional;
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class DummyTest4 {
+public class DummyTest9 {
     public static void main(String[] args) {
-        Optional<String> st = Optional.ofNullable(null);
-        String pernr = "123";
+        var longs = convertToLongList(List.of("1d23", "456"));
+        System.out.println(longs);
+    }
 
-        System.out.println(StringUtils.isNotEmpty(null));
-
-        st.ifPresentOrElse(s -> System.out.println(s), () -> System.out.println("LOG " + pernr));
+    private static List<Long> convertToLongList(List<String> strings) {
+        return strings.stream().map(Long::valueOf).collect(Collectors.toList());
     }
 }

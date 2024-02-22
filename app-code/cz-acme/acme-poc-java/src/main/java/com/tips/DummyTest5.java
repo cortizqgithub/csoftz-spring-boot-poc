@@ -4,7 +4,7 @@
  *
  * (c) Walt Disney.  All rights reserved.
  */
-package com.acme;
+package com.tips;
 
 import java.util.HashMap;
 import java.util.HashSet;

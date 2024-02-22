@@ -4,7 +4,7 @@
  *
  * (c) Walt Disney.  All rights reserved.
  */
-package com.acme;
+package com.tips;
 
 import com.acme.domain.shift.trade.ShiftTradeGiveAwayShiftRequest;
 import com.acme.domain.shift.trade.ShiftTradeTradingPartnerRequest;

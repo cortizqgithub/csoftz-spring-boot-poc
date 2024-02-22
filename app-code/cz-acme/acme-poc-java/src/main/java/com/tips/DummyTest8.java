@@ -4,7 +4,7 @@
  *
  * (c) Walt Disney.  All rights reserved.
  */
-package com.acme;
+package com.tips;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;

@@ -4,7 +4,7 @@
  *
  * (c) Walt Disney.  All rights reserved.
  */
-package com.acme;
+package com.tips;
 
 import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
