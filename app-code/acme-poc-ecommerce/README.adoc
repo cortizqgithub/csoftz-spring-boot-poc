@@ -1,0 +1,6 @@
+= Acme POC Ecommerce
+
+V 2024.1.0
+
+VERY BASIC sample.
+Only to explore eCommerce duties.
