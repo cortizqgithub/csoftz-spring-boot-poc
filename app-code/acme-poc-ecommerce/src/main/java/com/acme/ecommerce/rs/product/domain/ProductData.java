@@ -11,7 +11,6 @@ package com.acme.ecommerce.rs.product.domain;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
-import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

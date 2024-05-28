@@ -5,9 +5,12 @@
 /*-----------------------------------------------------------------------------
  History
  Mar.1/2024  COQ  File created.
+ May.28/2024 COQ  Change implementation to use a simplified ProblemDetail output.
+                  Use ErrorResponse builder to attach a full detail problem.
  -----------------------------------------------------------------------------*/
 package com.acme.ecommerce.common.exception.handler;
 
+import static com.acme.ecommerce.common.constants.ControllerExceptionHandlerConstants.ERROR_CATEGORY_GENERIC;
 import static com.acme.ecommerce.common.constants.ControllerExceptionHandlerConstants.ERROR_CATEGORY_PARAMETERS;
 import static com.acme.ecommerce.common.constants.ControllerExceptionHandlerConstants.PROPERTY_ERRORS;
 import static com.acme.ecommerce.common.constants.ControllerExceptionHandlerConstants.PROPERTY_ERROR_CATEGORY;
@@ -21,13 +24,12 @@ import com.acme.ecommerce.rs.product.domain.exception.ProductRequestException;
 import com.acme.ecommerce.rs.product.domain.exception.ProductsByNameNotFoundException;
 import java.net.URI;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -63,11 +65,21 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * @see ProductNotFoundException
      * @see ProductsByNameNotFoundException
      * @see ResponseEntity
-     * @see CustomErrorResponse
+     * @see ProblemDetail
      */
     @ExceptionHandler({ProductNotFoundException.class, ProductsByNameNotFoundException.class})
-    public ResponseEntity<CustomErrorResponse> handleProductNotFoundException(RuntimeException ex) {
-        return new ResponseEntity<>(new CustomErrorResponse(LocalDateTime.now(), HttpStatus.NOT_FOUND.value(), ex.getMessage()), HttpStatus.NOT_FOUND);
+    public ResponseEntity<Object> handleProductNotFoundException(RuntimeException ex, WebRequest request) {
+        var httpStatus = HttpStatus.NOT_FOUND;
+        var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, ex.getMessage());
+        var instanceURL = ((ServletWebRequest) request).getRequest().getRequestURI(); // This cast is for Servlet use case.
+
+        problemDetail.setType(URI.create(instanceURL));
+        problemDetail.setInstance(URI.create(instanceURL));
+        problemDetail.setProperty(PROPERTY_ERROR_CATEGORY, ERROR_CATEGORY_GENERIC);
+        problemDetail.setProperty(PROPERTY_TIMESTAMP, Instant.now());
+
+        // Pending how to extract all headers to comply with HttpHeaders class. May.28/2024
+        return this.createResponseEntity(problemDetail, null, httpStatus, request);
     }
 
     /**
@@ -79,11 +91,21 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * @see RuntimeException
      * @see ProductRequestException
      * @see ResponseEntity
-     * @see CustomErrorResponse
+     * @see ProblemDetail
      */
     @ExceptionHandler(ProductRequestException.class)
-    public ResponseEntity<CustomErrorResponse> handleProductRequestException(RuntimeException ex) {
-        return new ResponseEntity<>(new CustomErrorResponse(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), ex.getMessage()), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Object> handleProductRequestException(RuntimeException ex, WebRequest request) {
+        var httpStatus = HttpStatus.BAD_REQUEST;
+        var problemDetail = ProblemDetail.forStatusAndDetail(httpStatus, ex.getMessage());
+        var instanceURL = ((ServletWebRequest) request).getRequest().getRequestURI(); // This cast is for Servlet use case.
+
+        problemDetail.setType(URI.create(instanceURL));
+        problemDetail.setInstance(URI.create(instanceURL));
+        problemDetail.setProperty(PROPERTY_ERROR_CATEGORY, ERROR_CATEGORY_GENERIC);
+        problemDetail.setProperty(PROPERTY_TIMESTAMP, Instant.now());
+
+        // Pending how to extract all headers to comply with HttpHeaders class. May.28/2024
+        return this.createResponseEntity(problemDetail, null, httpStatus, request);
     }
 
     @Override
@@ -92,29 +114,25 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
                                                                   HttpStatusCode status,
                                                                   WebRequest request) {
         var instanceURL = ((ServletWebRequest) request).getRequest().getRequestURI(); // This cast is for Servlet use case.
+        var problemDetail = ProblemDetail.forStatusAndDetail(status, TITLE_VALIDATION_ERROR_ON_SUPPLIED_PAYLOAD);
 
-        return this.createResponseEntity(
-            ErrorResponse.builder(ex, HttpStatus.BAD_REQUEST, TITLE_VALIDATION_ERROR_ON_SUPPLIED_PAYLOAD)
-                .title(TITLE_BAD_REQUEST_ON_PAYLOAD)
-                .type(URI.create(instanceURL))
-                .instance(URI.create(instanceURL))
-                .property(PROPERTY_ERROR_CATEGORY, ERROR_CATEGORY_PARAMETERS)
-                .property(PROPERTY_ERRORS,
-                    Stream.concat(
-                            ex.getBindingResult()
-                                .getFieldErrors()
-                                .stream()
-                                .map(field -> field.getField() + COLON_SPACE_DELIMITER + field.getDefaultMessage()),
-                            ex.getBindingResult()
-                                .getGlobalErrors()
-                                .stream()
-                                .map(field1 -> field1.getObjectName() + COLON_SPACE_DELIMITER + field1.getDefaultMessage())
-                        )
-                        .sorted()
-                        .toList()
-                )
-                .property(PROPERTY_TIMESTAMP, Instant.now())
-                .build(),
-            headers, status, request);
+        problemDetail.setTitle(TITLE_BAD_REQUEST_ON_PAYLOAD);
+        problemDetail.setType(URI.create(instanceURL));
+        problemDetail.setInstance(URI.create(instanceURL));
+        problemDetail.setProperty(PROPERTY_TIMESTAMP, Instant.now());
+        problemDetail.setProperty(PROPERTY_ERROR_CATEGORY, ERROR_CATEGORY_PARAMETERS);
+        problemDetail.setProperty(PROPERTY_ERRORS, Stream.concat(
+                ex.getBindingResult()
+                    .getFieldErrors()
+                    .stream()
+                    .map(field -> field.getField() + COLON_SPACE_DELIMITER + field.getDefaultMessage()),
+                ex.getBindingResult()
+                    .getGlobalErrors()
+                    .stream()
+                    .map(field1 -> field1.getObjectName() + COLON_SPACE_DELIMITER + field1.getDefaultMessage()))
+            .sorted()
+            .toList());
+
+        return this.createResponseEntity(problemDetail, headers, status, request);
     }
 }

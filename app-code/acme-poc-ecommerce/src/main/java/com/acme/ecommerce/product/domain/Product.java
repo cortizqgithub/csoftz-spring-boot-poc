@@ -9,7 +9,6 @@
 package com.acme.ecommerce.product.domain;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

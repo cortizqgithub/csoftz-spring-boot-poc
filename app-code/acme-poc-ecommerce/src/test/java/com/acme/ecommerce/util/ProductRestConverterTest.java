@@ -2,9 +2,9 @@ package com.acme.ecommerce.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.acme.ecommerce.product.domain.Product;
 import com.acme.ecommerce.rs.product.domain.ProductData;
 import com.acme.ecommerce.rs.product.domain.response.ProductResponse;
-import com.acme.ecommerce.product.domain.Product;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;

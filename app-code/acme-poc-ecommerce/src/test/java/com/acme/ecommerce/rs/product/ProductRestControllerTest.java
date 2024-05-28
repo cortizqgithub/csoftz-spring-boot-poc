@@ -11,11 +11,11 @@ package com.acme.ecommerce.rs.product;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.acme.ecommerce.common.constants.ExceptionConstants;
+import com.acme.ecommerce.product.domain.Product;
 import com.acme.ecommerce.product.domain.ProductMessageInfo;
 import com.acme.ecommerce.rs.product.domain.ProductData;
 import com.acme.ecommerce.rs.product.domain.request.ProductRequest;
 import com.acme.ecommerce.rs.product.domain.response.ProductResponse;
-import com.acme.ecommerce.product.domain.Product;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;

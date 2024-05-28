@@ -16,6 +16,7 @@ import lombok.Data;
 
 /**
  * Represents CartCheckout information.
+ *
  * @author COQ - Carlos Adolfo Ortiz Q.
  */
 @Data

@@ -8,9 +8,9 @@
  -----------------------------------------------------------------------------*/
 package com.acme.ecommerce.util;
 
+import com.acme.ecommerce.product.domain.Product;
 import com.acme.ecommerce.rs.product.domain.ProductData;
 import com.acme.ecommerce.rs.product.domain.response.ProductResponse;
-import com.acme.ecommerce.product.domain.Product;
 import java.util.List;
 import java.util.stream.Collectors;
 

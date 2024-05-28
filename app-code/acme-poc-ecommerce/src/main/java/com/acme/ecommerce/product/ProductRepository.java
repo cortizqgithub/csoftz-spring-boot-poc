@@ -8,8 +8,8 @@
  -----------------------------------------------------------------------------*/
 package com.acme.ecommerce.product;
 
-import com.acme.ecommerce.util.Cache;
 import com.acme.ecommerce.product.domain.Product;
+import com.acme.ecommerce.util.Cache;
 import java.util.Collection;
 import java.util.Map;
 import org.springframework.stereotype.Repository;

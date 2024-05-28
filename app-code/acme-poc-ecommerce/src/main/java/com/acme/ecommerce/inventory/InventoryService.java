@@ -8,9 +8,9 @@
  -----------------------------------------------------------------------------*/
 package com.acme.ecommerce.inventory;
 
-import com.acme.ecommerce.rs.Location;
 import com.acme.ecommerce.location.LocationService;
 import com.acme.ecommerce.product.domain.Product;
+import com.acme.ecommerce.rs.Location;
 import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStreamReader;

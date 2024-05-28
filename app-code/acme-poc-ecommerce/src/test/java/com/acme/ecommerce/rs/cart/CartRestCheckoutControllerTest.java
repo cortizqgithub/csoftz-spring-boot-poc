@@ -11,8 +11,8 @@ package com.acme.ecommerce.rs.cart;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.acme.ecommerce.rs.Location;
-import com.acme.ecommerce.rs.cart.domain.CartRestItemInfo;
 import com.acme.ecommerce.rs.cart.domain.CartRest;
+import com.acme.ecommerce.rs.cart.domain.CartRestItemInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
