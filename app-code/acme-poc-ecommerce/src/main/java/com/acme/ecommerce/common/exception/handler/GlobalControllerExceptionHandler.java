@@ -107,7 +107,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
         // Pending how to extract all headers to comply with HttpHeaders class. May.28/2024
         return this.createResponseEntity(problemDetail, null, httpStatus, request);
     }
-
+    
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,

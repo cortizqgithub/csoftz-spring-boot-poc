@@ -25,7 +25,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ProductRestControllerTest {
+class ProductControllerTest {
 
     public static final String PRODUCT_RETRIEVE_ITEM_PATH = "/product/";
     public static final String PRODUCT_RETRIEVE_BY_BRAND_NAME_PATH = "/product/brand/";

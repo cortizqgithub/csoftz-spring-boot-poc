@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Implements a Rest Service Facade to expose HTTP endpoints for dealing with {@code Products}.
  * One task implemented as part of this controller is to validate the PathVariable and the Request List.
  * <p>
- * Using <a href="https://www.baeldung.com/spring-validate-list-controller">Validaing Lists in Spring</a></p>
+ * Using <a href="https://www.baeldung.com/spring-validate-list-controller">Validating Lists in Spring</a></p>
  *
  * @author COQ - Carlos Adolfo Ortiz Q.
  */
@@ -54,6 +54,13 @@ public class ProductController {
         this.productService = productService;
     }
 
+    /**
+     * Retrieves information for a given {@code productId}<br/>
+     * GET /product/{productId}
+     *
+     * @param productId Represents the identifier to be searched.
+     * @return Information about the product or a {@link ProductNotFoundException}.
+     */
     @GetMapping("/{productId}")
     public ProductResponse getProduct(@Valid @PathVariable @NotBlank String productId) {
         var product = productService.getProduct(productId);
@@ -65,6 +72,13 @@ public class ProductController {
         return ProductConverter.convertToProductResponse(product);
     }
 
+    /**
+     * Retrieves a list of products filtered by {@code brandName}<br/>
+     * GET /product/brand/{brandName}
+     *
+     * @param brandName Identifies the name of the brand to filter with.
+     * @return List of products by brand or {@code ProductsByNameNotFoundException} if no records found.
+     */
     @GetMapping("/brand/{brandName}")
     public List<Product> retrieveProductsByBrand(@Valid @PathVariable @NotBlank String brandName) {
         var productList = productService.retrieveProductsByBrand(brandName);
@@ -76,6 +90,17 @@ public class ProductController {
         return productList;
     }
 
+    /**
+     * Add a list of product in bulk to the inventory. It is only allowed in the request to send up to 10 items.<br/>
+     * If the products received in the payload is NULL, then a {@code ProductRequestException} with message <b>Payload 'products' must not be NULL</b> is raised.<br/>
+     * If the products received is the payload is EMPTY, then a {@code ProductRequestException} with message <b></b>Payload 'products' must not be empty</b> is raised.<br/>
+     * If the products received in the payload has more than 10 items, then a {@code ProductRequestException} with message <b>Payload 'products' can only contain up to 10 elements</b> is raised.<br/>
+     * POST /product
+     *
+     * @param request Includes the payload to process with a list of product to include in the inventory.
+     * @return A confirmation list on each added to the inventory matching the items received in the request.
+     * @see ProductRequest
+     */
     @PostMapping
     public List<ProductMessageInfo> addProductList(@Valid @RequestBody ProductRequest request) {
         if (request.getProducts() == null) {

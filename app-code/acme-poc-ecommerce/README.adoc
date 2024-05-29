@@ -4,3 +4,457 @@ V 2024.1.0
 
 VERY BASIC sample.
 Only to explore eCommerce duties.
+
+[NOTE]
+----
+Not all REST enpoints are documented here, this application only excercises one implementation contained in
+*_ProductController_*. It adds some Error Handler and common stuff for a project
+----
+
+== ProductController Endpoints
+Showing next the cURLs for the *_ProductController_*:
+
+=== RS Product Get Item
+GET /product/{productId}
+
+Retrieves information for a given *_{productId}_*.
+
+[source, bash]
+----
+$ curl --request GET \
+--url http://localhost:8080/product/{productId}
+----
+
+If the productId is not found, the given response follows (HTTP 404):
+
+[source, json]
+----
+{
+  "type": "/product/3382901",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "ProductRest ID [3382901] not found.",
+  "instance": "/product/3382901",
+  "errorCategory": "Generic",
+  "timestamp": "2024-05-28T23:16:19.354001100Z"
+}
+----
+
+If the productId is found, the given response follows (HTTP 200):
+
+[source, json]
+----
+{
+   "productId": "338290",
+   "brand": "The Landmark Project",
+   "price": 45
+}
+----
+
+=== RS Retrieve Products by Brand Name
+GET /product/brand/{brandName}
+
+Retrieves a list of products filtered by *_{brandName}_*
+
+[source,bash]
+----
+$ curl --request GET \
+  --url http://localhost:8080/product/brand/{brandName}
+----
+
+If records are found, a 200 code is returned. Here *_{brandName}_* is set to 'aei'.
+
+[source,json]
+----
+[
+	{
+		"productId": "123456",
+		"brand": "AEI",
+		"description": "Tent",
+		"price": 10
+	},
+	{
+		"productId": "384123",
+		"brand": "AEI",
+		"description": "Rain Pant",
+		"price": 35
+	}
+]
+----
+
+If no records found, a 404 error code is returned.
+
+[source, json]
+----
+{
+  "type": "/product/brand/aeiii",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No products found for brand=[aeiii]",
+  "instance": "/product/brand/aeiii",
+  "errorCategory": "Generic",
+  "timestamp": "2024-05-29T01:46:43.794186900Z"
+}
+----
+
+=== RS Product Add List
+Add a list of product in bulk to the inventory. It is only allowed in the request to send up to 10 items.
+
+POST /product
+
+For the request
+
+[source,bash]
+----
+$curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json'
+----
+
+If no payload is set, a 400 error code is raised.
+[source,json]
+----
+{
+	"type": "about:blank",
+	"title": "Bad Request",
+	"status": 400,
+	"detail": "Failed to read request",
+	"instance": "/product"
+}
+----
+
+For the request
+
+[source,bash]
+----
+$ curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{}'
+----
+
+No products are sent, it is considered as NULL.
+The response is as follows.
+
+[source,json]
+----
+{
+	"type": "/product",
+	"title": "Bad Request",
+	"status": 400,
+	"detail": "Payload 'products' must not be NULL.",
+	"instance": "/product",
+	"errorCategory": "Generic",
+	"timestamp": "2024-05-29T02:32:38.094285900Z"
+}
+----
+
+For the request
+
+[source,bash]
+----
+$ curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"products":null
+}'
+----
+
+[source,json]
+----
+{
+	"type": "/product",
+	"title": "Bad Request",
+	"status": 400,
+	"detail": "Payload 'products' must not be NULL.",
+	"instance": "/product",
+	"errorCategory": "Generic",
+	"timestamp": "2024-05-29T02:36:16.153785Z"
+}
+----
+
+For
+[source,bash]
+----
+curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"products":[]
+}'
+----
+
+The response follows
+
+[source,bash]
+----
+$ curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"products":[]
+}'
+----
+
+For the request
+[source,bash]
+----
+$ curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"products": [
+		{
+			"price": 2.15
+		},
+		{
+			"productId": "902236",
+			"brand": "Coming Soon",
+			"description": "Product 902236",
+			"price": 2.16
+		},
+		{
+			"price": 2.17
+		},
+		{
+			"productId": "902238",
+			"brand": "Coming Soon",
+			"description": "Product 902238",
+			"price": 2.18
+		},
+		{
+			"productId": "902239",
+			"brand": "Coming Soon",
+			"description": "Product 902239",
+			"price": 2.19
+		},
+		{
+			"productId": "902240",
+			"brand": "Coming Soon",
+			"description": "Product 902240",
+			"price": 2.20
+		},
+		{
+			"productId": "902241",
+			"brand": "Coming Soon",
+			"description": "Product 902241",
+			"price": 2.21
+		},
+		{
+			"productId": "902242",
+			"brand": "Coming Soon",
+			"description": "Product 902242",
+			"price": 2.22
+		},
+		{
+			"productId": "902243",
+			"brand": "Coming Soon",
+			"description": "Product 902243",
+			"price": 2.23
+		},
+		{
+			"productId": "902244",
+			"brand": "Coming Soon",
+			"description": "Product 902244",
+			"price": 2.24
+		}
+	]
+}
+'
+----
+
+Which have ten allowed items to be added (up to 10), but items have errors, thus the following response is given.
+
+[source,json]
+----
+{
+	"type": "/product",
+	"title": "Bad Request on payload",
+	"status": 400,
+	"detail": "Validation error on supplied payload",
+	"instance": "/product",
+	"timestamp": "2024-05-29T02:39:14.981242800Z",
+	"errorCategory": "Parameters",
+	"errors": [
+		"products[0].brand: Product 'Brand' is mandatory.",
+		"products[0].description: Product 'Description' is mandatory.",
+		"products[0].productId: 'Product Id' is mandatory.",
+		"products[2].brand: Product 'Brand' is mandatory.",
+		"products[2].description: Product 'Description' is mandatory.",
+		"products[2].productId: 'Product Id' is mandatory."
+	]
+}
+----
+
+For the request (with 10 valid products to add).
+
+[source,bash]
+----
+$ curl --request POST \
+  --url http://localhost:8080/product \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"products": [
+		{
+			"productId": "902999",
+			"brand": "Coming Soon",
+			"description": "Product 902999",
+			"price": 2.15
+		},
+		{
+			"productId": "902236",
+			"brand": "Coming Soon",
+			"description": "Product 902236",
+			"price": 2.16
+		},
+		{
+			"productId": "802999",
+			"brand": "Coming Soon",
+			"description": "Product 802999",
+			"price": 2.17
+		},
+		{
+			"productId": "902238",
+			"brand": "Coming Soon",
+			"description": "Product 902238",
+			"price": 2.18
+		},
+		{
+			"productId": "902239",
+			"brand": "Coming Soon",
+			"description": "Product 902239",
+			"price": 2.19
+		},
+		{
+			"productId": "902240",
+			"brand": "Coming Soon",
+			"description": "Product 902240",
+			"price": 2.20
+		},
+		{
+			"productId": "902241",
+			"brand": "Coming Soon",
+			"description": "Product 902241",
+			"price": 2.21
+		},
+		{
+			"productId": "902242",
+			"brand": "Coming Soon",
+			"description": "Product 902242",
+			"price": 2.22
+		},
+		{
+			"productId": "902243",
+			"brand": "Coming Soon",
+			"description": "Product 902243",
+			"price": 2.23
+		},
+		{
+			"productId": "902244",
+			"brand": "Coming Soon",
+			"description": "Product 902244",
+			"price": 2.24
+		}
+	]
+}'
+----
+
+We get the folowing successful 200 response.
+
+[source, json]
+----
+[
+	{
+		"msg": "ProductRest with id=[902999]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902236]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[802999]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902238]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902239]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902240]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902241]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902242]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902243]",
+		"description": "ProductRest added successfully."
+	},
+	{
+		"msg": "ProductRest with id=[902244]",
+		"description": "ProductRest added successfully."
+	}
+]
+----
+
+If we send the same items to add (as they are in the system), the respons is:
+
+[source,json]
+----
+[
+	{
+		"msg": "ProductRest with id=[902999]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902236]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[802999]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902238]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902239]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902240]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902241]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902242]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902243]",
+		"description": "ProductRest exist and not modified."
+	},
+	{
+		"msg": "ProductRest with id=[902244]",
+		"description": "ProductRest exist and not modified."
+	}
+]
+----
+
+and of course, if we mix one that exist with one that does not exist, the message is given accordingly, following
+the responses described above.
