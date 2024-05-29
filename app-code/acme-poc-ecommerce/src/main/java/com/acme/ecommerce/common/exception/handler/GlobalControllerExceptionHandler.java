@@ -59,7 +59,8 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * Defines the message to be returned as the response when the {@link ProductNotFoundException} is raised.
      * Contains the information of the thrown exception to include as part of the response.
      *
-     * @param ex Instance to the whole problem.
+     * @param ex      Instance to the whole problem.
+     * @param request Instance with information about the request.
      * @return A message indicating properly when this exception is raised that the system has not properly managed.
      * @see RuntimeException
      * @see ProductNotFoundException
@@ -86,7 +87,8 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
      * Defines the message to be returned as the response when the {@link ProductRequestException} is raised.
      * Contains the information of the thrown exception to include as part of the response.
      *
-     * @param ex Instance to the whole problem.
+     * @param ex      Instance to the whole problem.
+     * @param request Instance with information about the request.
      * @return A message indicating properly when this exception is raised that the system has not properly managed.
      * @see RuntimeException
      * @see ProductRequestException
@@ -107,7 +109,7 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
         // Pending how to extract all headers to comply with HttpHeaders class. May.28/2024
         return this.createResponseEntity(problemDetail, null, httpStatus, request);
     }
-    
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
